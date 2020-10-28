@@ -1,0 +1,138 @@
+<div *ngIf="isLoading" class="loading-container">
+
+  <mat-progress-spinner mode="indeterminate" ></mat-progress-spinner>
+</div>
+
+<div *ngIf="isRegister" class="register-user-loading-container">
+  <div class="progress-background">
+    <h2 class="loader-text fixed-Label">{{status}}</h2>
+  <mat-progress-spinner mode="indeterminate" ></mat-progress-spinner>
+  </div>
+</div>
+
+
+
+<div class="agent-form">
+  <div class="agent-form-heading heading-nestimate">Agent SignUp Form</div>
+
+
+  <div class="mat-card-item">
+    <div class="heading-signup heading-nestimate">Please fill your company details</div>
+  </div>
+
+
+
+  <div class="mat-card-item">
+    <form>
+
+      <div class="extra-field-two" >
+        <mat-form-field class="full-width" appearance="outline">
+          <mat-label  class="fixed-Label" >
+            <span id="FullName">Full Name*</span>
+          </mat-label>
+          <input matInput name="fullname" [(ngModel)]="fullname" #Names>
+        </mat-form-field>
+      </div>
+
+      <div class="extra-field-two" >
+        <mat-form-field class="full-width"  appearance="outline">
+          <mat-label class="fixed-Label" ><span id="CompanyName">Company Name*</span></mat-label>
+          <input matInput  name="company" [(ngModel)]="company" #Company>
+        </mat-form-field>
+      </div>
+
+      <div class="extra-field-two" >
+        <div class="full-width " >
+          <mat-form-field class="full-width" appearance="outline" >
+            <mat-label class="fixed-Label" ><span id="Postcode">Enter Postcode*</span></mat-label>
+            <input type="text" aria-label="Post Code" matInput name="postcode" [(ngModel)]="postcode" #postcodes>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="extra-field-two" >
+        <mat-form-field class="full-width" appearance="outline">
+          <mat-label class="fixed-Label"><span id="Address">Address*</span></mat-label>
+          <input matInput  name="address" [(ngModel)]="address" #Address>
+        </mat-form-field>
+      </div>
+
+      <div class="extra-field-two">
+        <mat-form-field class="full-width" appearance="outline">
+          <mat-label class="fixed-Label"><span id="Job"> Job title* </span></mat-label>
+          <input matInput  name="jobtitle" [(ngModel)]="jobtitle" #Jobs>
+        </mat-form-field>
+      </div>
+
+      <div class="extra-field-two" >
+        <mat-form-field class="full-width" appearance="outline">
+          <mat-label class="fixed-Label"><span id="Number">Phone Number*</span></mat-label>
+          <input matInput  name="phone" [(ngModel)]="phone" #Phone   maxlength="10">
+        </mat-form-field>
+      </div>
+
+      <div class="extra-field-two" >
+        <mat-form-field class="full-width" appearance="outline">
+          <mat-label class="fixed-Label"><span id="Email">Email address* </span></mat-label>
+          <input matInput [(ngModel)]="email" name="email" #Emails>
+        </mat-form-field>
+      </div>
+
+      <div class="extra-field-two" >
+        <mat-form-field class="full-width" appearance="outline">
+          <mat-label class="fixed-Label"><span id="Password">Enter your password*</span></mat-label>
+          <input matInput [type]="hide ? 'password' : 'text'" name="password" [(ngModel)]="password" #Passowrd>
+          <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+            [attr.aria-pressed]="hide">
+            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+          </button>
+        </mat-form-field>
+      </div>
+
+      <div class="extra-field-two" >
+        <mat-form-field class="full-width" appearance="outline">
+          <mat-label class="fixed-Label"><span id="Soleagency">Sole Agency Fees* </span></mat-label>
+          <input matInput  name="solefees" [(ngModel)]="solefees" #Sole>
+        </mat-form-field>
+      </div>
+
+      <div class="extra-field-two" >
+        <mat-form-field class="full-width" appearance="outline">
+          <mat-label class="fixed-Label"><span id="Multiagency">Multiple Agency Fees*</span></mat-label>
+          <input matInput  name="multiplefees" [(ngModel)]="multiplefees" #MultiFees>
+        </mat-form-field>
+      </div>
+
+      <div class="extra-field-two"  *ngIf="!imageUploaded">
+        <mat-label class="fixed-Label"><span id="Image">Upload Logo*</span></mat-label>
+        <form #form class="upload-form">
+          <input type="file" name="files" [(ngModel)]="files" class="image-file" #file >
+          <button mat-raised-button color="primary" (click)="UploadImage()" >Upload</button>
+        </form>
+      </div>
+     <div class="image-container" *ngIf="imageUploaded">
+       <div>
+       <p class="fixed-Label">Preview</p>
+       
+      </div>
+      <div class="image-and-remove">
+        <img src="http://134.209.93.8{{ImageUrl}}"  class="image-uploaded"/>
+       <span class="fixed-Label remove-button" (click)="RemoveImage()">Remove</span>
+
+      </div>
+     </div> 
+      <div class="submit-button">
+        <!-- <button mat-raised-button color="primary"
+          (click)="registerNewUser(fullname,company,postcode,address,jobtitle,phone,email,password,solefees,multiplefees)">Start
+          My Free 3-Month Trial Now</button> -->
+          <button mat-raised-button color="primary"
+          (click)="Validation()">Start
+          My Free 3-Month Trial Now</button>
+          
+      </div>
+
+
+
+    </form>
+  </div>
+</div>

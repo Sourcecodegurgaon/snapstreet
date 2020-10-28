@@ -1,0 +1,152 @@
+/* You can add global styles to this file, and also import other style files */
+body{
+    background-color: #F5F5F5;
+    height: auto;
+    overflow-x: hidden;
+}
+@font-face {
+    font-family: 'Segoe UI Regular';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Segoe UI Regular'), url('assets/font/Segoe UI.woff') format('woff');
+}
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+:root {
+    --light-blue-color: #1EAAFA;
+
+    --DARK-BLUE-COLOR:  #0F3C73;
+
+     --Darker-blue-color : #50505a;
+     --BAckground-dark-color:rgb(223,223,223)
+
+  }
+
+  .heading-nestimate
+{
+  color: var(--DARK-BLUE-COLOR);
+  font-family: 'Roboto-Bold';
+}
+.paragraph-color
+{
+  color: var(--light-blue-color);
+  font-family: 'Roboto-Light';
+}
+.outputText
+{
+  color: var(--light-blue-color);
+  font-family: 'Roboto-Medium';
+}
+
+@font-face {
+  font-family: 'Roboto-Bold';
+  src: url(./assets/font/Roboto-Bold.ttf);
+}
+
+@font-face {
+  font-family: 'Roboto-Light';
+  src: url(./assets/font/Roboto-Light.ttf);
+}
+
+@font-face {
+  font-family: 'Roboto-Medium';
+  src: url(./assets/font/Roboto-Medium.ttf);
+}
+
+.mat-radio-label-content
+{
+  font-family: 'Roboto-Medium';
+}
+.mat-select-panel .mat-option {
+  font-family: 'Roboto-Medium';
+  color:var(--DARK-BLUE-COLOR)
+}
+.mat-tab-label-content
+{
+  font-family: 'Roboto-Bold';
+  color: var(--DARK-BLUE-COLOR);
+}
+.thanku-section {
+  background-color: white;
+  flex-direction: column;
+  align-items: center;
+  margin: 0px !important;
+}
+input[type="tel"] {
+  -moz-appearance: textfield;
+}
+input[type="tel"]::-webkit-inner-spin-button, 
+input[type="tel"]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+
+/* .background-new-form
+{
+  background-color: var(--DARK-BLUE-COLOR);
+} */
+.new-heading-nestimate
+{
+  /* color: white; */
+  color: var(--DARK-BLUE-COLOR);
+  font-family: 'Roboto-Bold';
+}
+.mat-primary .mat-check.mat-option.mat-selected:not(.mat-option-disabled) {
+  border: 3px solid white;
+  border-radius: 2em;
+    margin: 1em 1em;
+
+}
+.dark-background
+{
+    background-color:  var(--BAckground-dark-color) !important;
+} 
+
+hr {
+  margin-top: 2rem;
+   margin-bottom: none;
+  /* border: 0; */
+  border-top: 1px solid rgb(0 0 0);
+  width: 80vw;
+}
+
+.home_content_container{
+  background-color: white !important;
+}
+.form-control {
+  display: block;
+  width: 80%;
+  height: calc(1.5em + .75rem + 2px);
+  padding: .375rem .75rem;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #495057;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #ced4da;
+  border-radius: .25rem;
+  transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+input.form-control.custom-field {
+  height: 3vh !important;
+
+  margin-top: 1em;
+  width: 93%;
+}
+
+.a-button-primary .a-button-inner
+{
+  padding: 0.5em !important;
+}
+/* .mat-form-field-flex {
+  display: inline-flex;
+  align-items: baseline;
+  box-sizing: border-box;
+  border: 1px solid grey;
+  width: 100%;
+} */
+img.right-form-image {
+  height: 25em;
+}

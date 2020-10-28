@@ -1,0 +1,567 @@
+.back {
+  background-image: url(/assets/Images/home.jpeg);
+  width: 100%;
+  height: auto;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.upper-back {
+  background-color: black;
+  width: 100%;
+  height: 250px;
+  opacity: 0.5;
+}
+.upper-button {
+  display: flex;
+  justify-content: space-around;
+  align-content: center;
+  z-index: 100;
+  position: relative;
+  top: -145px;
+}
+
+.home-button {
+  background-color:var(--light-blue-color);
+  color: white;
+  width: 35%;
+}
+.home-button-SELL
+{
+  background-color: var(--DARK-BLUE-COLOR);
+  color: white;
+  width: 35%;
+}
+
+.home-text-font {
+ 
+
+  margin-bottom: 0.5rem;
+}
+.example-form {
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+}
+
+.example-full-width {
+  width: 100%;
+  border: none;
+}
+
+.loading-container {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  align-items: center;
+  z-index: 9;
+  background: black;
+  opacity: 0.5;
+}
+.how_does_it_work_steps {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+img.step-mage {
+  width: 33%;
+  margin: 14px;
+}
+p.step-text {
+  text-align: center;
+  color: var(--DARK-BLUE-COLOR);
+  font-family: 'Roboto-Medium';
+}
+
+
+.steps-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 0em 1em;
+}
+.step {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+}
+@media only screen and (min-width:768px)
+{
+  .icon-size
+  {
+    width: 50% !important;
+  }
+}
+.cookies-policy {
+  background-color: white;
+position: absolute;
+  padding: 3px;
+  position: fixed;
+bottom: 0px;
+z-index: 1;
+box-shadow: 0 2.8px 2.2px rgba(0, 0, 0, 0.034), 0 6.7px 5.3px rgba(0, 0, 0, 0.048), 0 12.5px 10px rgba(0, 0, 0, 0.06), 0 22.3px 17.9px rgba(0, 0, 0, 0.072), 0 41.8px 33.4px rgba(0, 0, 0, 0.086), 0 100px 80px rgba(0, 0, 0, 0.12);
+}
+.policy-content {
+  margin: 13px;
+  text-align: justify;
+}
+.policy-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 13px;
+}
+p
+{
+  margin-bottom: 0px;
+}
+img.button-cross {
+  width: 17px;
+}
+.custom-button-first {
+
+  padding: 8px;
+  border-radius: 5px;
+  width: 50%;
+  flex-direction: inherit;
+    display: flex;
+    justify-content: space-around;
+   
+}
+.blue-circle {
+  padding: 5px;
+  border: 2px solid var(--light-blue-color);
+  border-radius: 50%;
+  width: 17%;
+}
+.custom-text {
+  font-size: 16px;
+  font-family: 'Roboto-Bold';
+}
+.upper-custom-button {
+  display: flex;
+  justify-content: center;
+}
+.create-nestimate {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  justify-content: center;
+  background-color:var(--DARK-BLUE-COLOR);
+margin-top: 1em;
+
+
+}
+img.button-image {
+height: 7vh;
+}
+.text-create-nestimate
+{
+  color: white;
+  font-size: 1.3em;
+  padding: 0em 1em;
+  font-family: 'Roboto-Medium';
+}
+.large-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+p.i-am {
+  /* text-align: center; */
+  font-size: 1.3em;
+  text-align: center;
+  margin-bottom: 5px;
+  font-family: 'Roboto-Bold';
+}
+.custom-button-first:hover
+{
+  cursor: pointer;
+}
+.radio-container {
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  cursor: pointer;
+  font-size: 15px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  padding-top: 0.3em;
+}
+
+/* Hide the browser's default radio button */
+.radio-container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+/* Create a custom radio button */
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  border: 2px solid var(--light-blue-color);
+  border-radius: 50%;
+}
+
+/* On mouse-over, add a grey background color */
+.radio-container:hover input ~ .checkmark {
+  background-color: #ccc;
+}
+
+/* When the radio button is checked, add a blue background */
+.radio-container input:checked ~ .checkmark {
+  background-color: var(--DARK-BLUE-COLOR);
+}
+
+/* Create the indicator (the dot/circle - hidden when not checked) */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the indicator (dot/circle) when checked */
+.radio-container input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* Style the indicator (dot/circle) */
+.radio-container .checkmark:after {
+ 	top: 9px;
+	left: 9px;
+	width: 8px;
+	height: 8px;
+  border-radius: 50%;
+}
+label
+{
+  margin-bottom: 0px !important;
+}
+.slider-image
+{
+  width: 100%;
+  height: 250px;
+}
+
+@media screen and (min-width:701px)
+{
+  .slider-image
+{
+  height: 80vh;
+}
+.radio-cn {
+  position: absolute;
+  bottom: 12vh;
+  left: 2vw;
+}
+.second-card.mat-card {
+  display: none;
+}
+.steps-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 5em;
+}
+
+img.step-mage {
+  width: 30%;
+  margin: 14px;
+}
+.cookies-policy {
+
+  margin: 2em 4em;
+}
+.cookies-policy-text {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.cookies-button {
+  /* display: contents; */
+  display: flex;
+  flex-direction: row;
+}
+.policy-content {
+  margin: 13px;
+  text-align: justify;
+  /* margin: 13px 18px; */
+  width: 63vw;
+  display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    align-items: center;
+    margin-top: 10px;
+    margin-bottom: 5px;
+    color: black;
+    font-family: "Roboto-Light";
+}
+.policy-heading {
+
+  display: inline;
+  margin-left: 13px;
+  color: black;
+  font-family: "Roboto-Bold";
+}
+
+}
+
+.text-over-image {
+  /* position: absolute; */
+  position: relative;
+  /* bottom: 50vh; */
+  top: -8vh;
+  /* bottom: 50vh; */
+  text-align: center;
+  z-index: 1;
+  font-size: 1.5em;
+  font-family: 'Roboto-Bold';
+  color: white;
+}
+.radio-cn.mat-card {
+
+  background-color: var(--BAckground-dark-color);
+}
+p.text-over-image-second {
+  position: absolute;
+  /* top: 2vh; */
+  bottom: -15vh;
+  color: white;
+  font-size: 1.4em;
+  font-family: 'Roboto-Bold';
+  text-align: center;
+  width: 100%;
+
+}
+.second-card
+{
+  background-color: var(--BAckground-dark-color); 
+}
+p.slider-text.heading-nestimate {
+  text-align: center;
+  margin-top: 4px;
+}
+
+  .heading-nestimate-font{
+  font-size: 22px;
+  padding: 2em;
+  text-align: center;
+
+}
+.top-button-cookies {
+  text-align: center;
+  /* height: 7vh; */
+  color: white;
+  border: 4px solid #81C2FD;
+  display: flex;
+  justify-content: center;
+  padding: 1em;
+  margin: 1em;
+  border-radius: 5px;
+  align-items: center;
+
+}
+.lower-button
+{
+  background-color: #6DDDB7;
+  border: none;
+  color: black;
+}
+.agent-form {
+  display: flex;
+  /* width: 100%; */
+  justify-content: center;
+  margin: 1em;
+}
+.listing-heading {
+  margin: 1em;
+}
+.to-buy {
+  margin: 0em 0.5em;
+}
+span.greater-than-arrow.paragraph-color.mr-1 {
+  font-size: 1.7em;
+  padding-right: 0.1em;
+  padding-right: 0.5em;
+}
+.image-over {
+  margin-top: 2em;
+}
+
+img.buyer-jpg {
+  height: 36vh;
+  width: 100%;
+}
+.custom-buttons {
+  padding: 1em 0em;
+}
+.card-steps {
+  background-color: white;
+  padding-bottom: 2em;
+}
+
+.slider-text {
+
+  text-align: center;
+  width: 100%;
+  color:var(--DARK-BLUE-COLOR);
+}
+@media screen and (min-width:701px)
+{
+  
+hr
+{
+ display: none;
+}
+.custom-buttons {
+  padding: 1em 0em;
+  background-color: white;
+  padding: 2em;
+  border-radius: 10px;
+  margin: 1em;
+}
+.slider-text {
+
+  font-size: 1.2em;
+}
+.outputText {
+
+  font-size: 1.1em;
+}
+.heading-nestimate-font {
+  font-size: 2em;
+}
+img.buyer-jpg {
+
+  display: none;
+}
+.text-over-image {
+
+  font-size: 1.7em;
+ 
+}
+.top-button-cookies {
+  text-align: center;
+
+  border: 2px solid #81C2FD;
+  display: flex;
+  justify-content: center;
+  padding: 0.6em;
+  margin: 1em;
+  border-radius: 5px;
+  align-items: center;
+}
+.policy-content-layout {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+}
+}
+@media screen and (max-width:700px)
+{
+  .top-button-cookies
+  {
+    padding: 0.7em;
+    margin: 1.3em;
+    border: none;
+    background: #205CA5;
+    color: white !important;
+
+  }
+  .policy-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 4px;
+    margin-left: 0px !important;
+
+}
+.policy-content {
+margin: 0px;
+margin: 0px;
+color: black;
+font-family: "Roboto-Light";
+}
+.policy-content-layout {
+  margin: 20px;
+}
+.cookies-policy{
+  background-color: #ffffd5;
+  width: 100vw;
+}
+img.blog-image {
+  width: 100% !important;
+}
+.policy-heading {
+
+
+  color: black;
+  font-family: "Roboto-Bold";
+}
+}
+
+.blog-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  margin: 2em;
+  grid-gap: 2em;
+}
+img.blog-image {
+  width: 30vw;
+}
+.heading-nestimate.blog-top-heading {
+  margin-left: 1.7em;
+  font-size: 1.3em;
+}
+.grid-text{
+ font-family: "Roboto-Light";
+ margin: 10px 5px;
+}
+
+@media screen and (max-width:700px)
+{
+  .blog-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    margin: 2em;
+    grid-gap: 3em;
+}
+.heading-nestimate.blog-top-heading {
+  font-size: 1.3em;
+  margin: 0em 1em;
+}
+}
+.blog-link-decoration{
+  text-decoration: none;
+  color: black;
+}
+
+@media screen and (min-width:701px)
+{
+  .image-over
+  {
+    display: none;
+  }
+}
+.home_content_container {
+  background-color: white !important;
+  padding-bottom: 2em;
+}

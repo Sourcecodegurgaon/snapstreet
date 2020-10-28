@@ -1,0 +1,137 @@
+<div *ngIf="isBuyerSelected" class="loading-container">
+  <mat-progress-spinner mode="indeterminate"></mat-progress-spinner>
+</div>
+<div class="container property-detail-container">
+  <h3 class="property-detail-h3 heading-nestimate">{{usertitle}} {{username | shortName}}</h3>
+  <div class="wrapper-detail-container">
+<div class="streetname">
+
+  <div class="Mat-card-div">
+    <div class="details-p-headings heading-nestimate" *ngIf="buyerPropertyFor=='buy'">Buyer Price Range</div>
+    <div class="details-p-headings heading-nestimate" *ngIf="buyerPropertyFor=='rent'">Buyer Rent Range</div>
+
+    <div class="details-output-p paragraph-color">&pound;{{MinAmount}} - &pound;{{MaxAmount}}</div>
+  </div>
+  
+  <div class="Mat-card-div">
+    <div class="details-p-headings heading-nestimate">Buying Position</div>
+    <div class="details-output-p paragraph-color">{{buyingPosition}}</div>
+  </div>
+
+  <div class="Mat-card-div">
+    <div class="details-p-headings heading-nestimate">Buyer Financial Postion</div>
+    <div class="details-output-p paragraph-color">{{buyerFinancialPosition}}</div>
+  </div>
+  <div class="Mat-card-div">
+    <div class="details-p-headings heading-nestimate">Searching for Property Type</div>
+    <div class="details-output-p paragraph-color">{{BuyerPropertyType}}</div>
+  </div>
+
+  <div class="Mat-card-div">
+    <div class="details-p-headings heading-nestimate">Searching in Post Code</div>
+    <div class="details-output-p paragraph-color">{{BuyerLookingpostcode}}</div>
+  </div>
+
+
+  
+  
+  <div class="Mat-card-div">
+    <div class="details-p-headings heading-nestimate">Searching for No Of Bedrooms</div>
+    <div class="details-output-p paragraph-color">{{BuyerRoommin}} - {{BuyerRoomsmax}}</div>
+  </div>
+
+  <div class="Mat-card-div">
+    <div class="details-p-headings heading-nestimate">Buyer Street Name</div>
+    <div class="details-output-p paragraph-color">{{LookingStreetname}}</div>
+  </div>
+
+
+<div class="Mat-card-div">
+    <div class="details-p-headings heading-nestimate">Buying Position</div>
+    <div class="details-output-p paragraph-color">{{Position}}</div>
+  </div>
+
+
+
+
+  <div class="Mat-card-div">
+    <div class="details-p-headings heading-nestimate">Property type</div>
+    <div class="details-output-p paragraph-color">{{PropertyType}}</div>
+  </div>
+
+
+  
+  <div class="Mat-card-div">
+    <div class="details-p-headings heading-nestimate">Property Condition</div>
+    <div class="details-output-p paragraph-color">{{Conditions}}</div>
+  </div>
+
+  <div class="Mat-card-div">
+    <div class="details-p-headings heading-nestimate">No of Bathrooms</div>
+    <div class="details-output-p paragraph-color">{{Maxbathroom}} </div>
+  </div>
+
+
+  <div class="Mat-card-div">
+    <div class="details-p-headings heading-nestimate">No of Reception Rooms</div>
+    <div class="details-output-p paragraph-color">{{Maxreception}}</div>
+  </div>
+
+
+
+</div>
+<div class="selected-button m-3">
+  <button mat-raised-button color="primary" *ngIf="matchStatus=='pending'" disabled>Pending</button>
+  <button mat-raised-button color="primary"  (click)="backClicked()">Back</button>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <div class="container property-detail-container">
+  <h3 class="property-detail-h3">{{LookingAddress}}</h3>
+  <div class="wrapper-detail-container">
+    <div id="demo">
+      <img *ngIf="PropertyType=='Flat'" src="assets/Images/Flat.svg" class="match-images">
+      <img *ngIf="PropertyType=='TerracedHouse'" src="assets/Images/Terraced.svg" class="match-images  ">
+      <img *ngIf="PropertyType=='Semi-detached'" src="assets/Images/Semi-detached.svg" class="match-images  ">
+      <img *ngIf="PropertyType=='ParkHome'" src="assets/Images/Park Home.svg" class="match-images  ">
+      <img *ngIf="PropertyType=='Land'" src="assets/Images/Land.svg" class="match-images">
+
+    </div>
+    <div class="streetname">
+      <div class="Mat-card-div">
+        <div class="details-p-headings heading-nestimate">Pincode</div>
+        <div class="details-output-p outputText">{{Lookingpostcode}}</div>
+      </div>
+
+      <div class="Mat-card-div">
+        <div class="details-p-headings heading-nestimate">PriceRange</div>
+        <div class="details-output-p outputText">{{MaxAmount}}</div>
+      </div>
+      <div class="selected-button">
+      
+      </div>
+
+    </div>
+
+  </div>
+</div> -->

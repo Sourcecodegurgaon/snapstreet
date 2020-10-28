@@ -1,0 +1,157 @@
+<div class="my-requirement-container container">
+  <p class="my-requirement-heading heading-nestimate">
+    My Nestimates
+  </p>
+
+
+</div>
+<div class="not-have-nestimate" *ngIf="listingLength == 0">
+  <div class="not-have-nestimate-content"  routerLink="/">
+    You have no Nestimate created<br>
+    <span >Create one now!</span>
+  </div>
+
+</div>
+  <mat-tab-group>
+    <mat-tab label="To Buy" class="mat-label-align" *ngIf="buyerItemLength>0">
+      <div class="mat-card-content-new" *ngFor="let requirement of propertyRequirementDetails" >        
+        <div class="mat-cards">
+          <div class="mat-card-content-new-content">
+            <div class="mat-card-content-image">
+              <img src="../../../../../../assets/Images/sidelogo.png" class="match-images">
+            </div>
+            <div class="mat-card-content-text">
+            
+              <div class="dust_price">
+              <div class="price-range heading-cards">
+                <span class="heading-nestimate " *ngIf="requirement.PropertyFor =='buy'">Price Range</span> <span class="heading-nestimate" *ngIf="requirement.PropertyFor=='rent'">Rent Range</span><br>
+  
+                <span class="outputText price-font">&pound;{{requirement.MinAmount}}     -     	&pound;{{requirement.MaxAmount}}</span>
+         
+              </div>
+              <div class="dust-image">
+                <img src="../../../assets/Images/dust.png" class="dust-bin" (click)="deletdeleteBuyer(requirement.id)">
+              </div>
+            </div>
+
+
+              <div class="other-text" *ngIf="requirement.PropertyFor=='buy'">
+                <div class="heading-nestimate heading-cards">Buying Position:<span
+                    class="outputText" style="padding-left: 0.8em;">{{requirement.ChainStatus}}</span></div>
+                <div class="heading-nestimate heading-cards">Poperty Type:<span
+                    class="outputText" style="padding-left: 0.8em;">{{requirement.PropertyType}}</span></div>
+              </div>
+              <div class="other-text" *ngIf="requirement.PropertyFor=='rent'">
+                <div class="heading-nestimate heading-cards">Renting Position:<span
+                    class="outputText" style="padding-left: 0.8em;">{{requirement.ChainStatus}}</span></div>
+              
+              </div>
+             
+            </div>    
+          </div>
+          <div class="button-container">
+       <div class="dark-blue-button" routerLink="/EditListingBuyer/{{requirement.Currentpostcode}}
+            /{{requirement.CurrentTown}}
+            /{{requirement.CurrentAddress}}
+            /{{requirement.Currentstate}}
+            /{{requirement.Currentcountry}}
+            /{{requirement.Lookingpostcode}}
+            /{{requirement.LookingStreetname}}
+            /{{requirement.LookingTown}}
+            /{{requirement.Lookingstate}}
+            /{{requirement.Country}}
+            /{{requirement.FinancialPosition}}
+            /{{requirement.PropertyType}}
+            /{{requirement.Roommin}}
+            /{{requirement.Roomsmax}}
+            /{{requirement.MinAmount}}
+            /{{requirement.MaxAmount}}
+            /{{requirement.Validity}}
+            /{{requirement.Minbathroom}}
+            /{{requirement.Maxbathroom}}
+            /{{requirement.Minreception}}
+            /{{requirement.Maxreception}}
+            /{{requirement.Conditions}}
+            /{{requirement.Ownership}}
+            /{{requirement.features}}
+            /{{requirement.id}}/{{requirement.PropertyFor}}/{{requirement.ChainStatus}}">Edit<span class="entity-see-deatil outputText">
+              &gt;</span></div>
+            <div class="dark-blue-button" routerLink="/buyerMatchlisting/{{requirement.Lookingpostcode}}/
+            {{requirement.PropertyType}}
+            /{{requirement.LookingTown}}
+            /{{requirement.MinAmount}}
+            /{{requirement.MaxAmount}}
+            /{{requirement.latitude}}
+            /{{requirement.longitude}}
+            /{{newUser}}
+            /{{requirement.PropertyFor}}
+            /{{requirement.LookingStreetname}}
+            /{{requirement.Conditions}}
+            /{{requirement.FinancialPosition}}
+            /{{requirement.Validity}}
+            /{{requirement.Position}}
+            /{{requirement.UserId}}
+            /{{requirement.ChainStatus}}/{{requirement.id}}">Potential <span class="entity-see-deatil outputText">
+              &gt;</span></div>
+            <div class="dark-blue-button" routerLink="/listingpropertydetail/{{requirement.MinAmount}}/{{requirement.MaxAmount}}/{{requirement.Lookingpostcode}}/{{requirement.ChainStatus}}/{{requirement.FinancialPosition}}/{{requirement.PropertyType}}/{{requirement.Position}}/{{requirement.MaxAmount}}/{{requirement.id}}">See Details<span class="entity-see-deatil outputText">
+              &gt;</span></div> 
+            
+          </div>
+        </div>
+      </div>
+
+
+
+
+
+    </mat-tab>
+    <mat-tab label="To Sell" class="mat-label-align" *ngIf="sellerLength > 0">
+      
+      <div class="mat-card-content-new"  *ngFor="let property of propertyDetails"  >
+        <div class="mat-cards">
+          <div class="mat-card-content-new-content">
+            <div class="mat-card-content-image">
+              <img src="../../../../../../assets/Images/sidelogo.png" class="match-images">
+            </div>
+            <div class="mat-card-content-text">
+              <div class="dust_price">
+              <div class="price-range">
+                <span class="heading-nestimate" (click)="openDialog()" *ngIf="property.PropertyFor=='buy'">Desired Price</span><span class="heading-nestimate" (click)="openDialog()" *ngIf="property.PropertyFor=='rent'">Desired Rent</span> <br>
+                <span class="outputText price-font">&pound;{{property.MaxAmount}}</span>
+              </div>
+              <div class="dust-image">
+                <img src="../../../assets/Images/dust.png" class="dust-bin" (click)="deleteOrder(property.id)">
+              </div>
+            </div>
+              <div class="other-text">
+                <div class="heading-nestimate heading-cards">Postcode:<span
+                    class="outputText" style="padding-left: 0.8em;">{{property.Lookingpostcode}}</span></div>
+                <div class="heading-nestimate heading-cards">No of Rooms:<span
+                    class="outputText" style="padding-left: 0.8em;">{{property.Maxbathrooms}}</span></div>
+              </div>
+            
+            </div>
+          </div>
+          <div class="button-container">
+            <div class="dark-blue-button" routerLink="/editListingSeller/{{property.Lookingpostcode}}/{{property.LookingAddress}}/{{property.LookingTown}}/{{property.Lookingstate}}/{{property.PropertyType}}/{{property.Maxrooms}}/{{property.MaxAmount}}/{{property.ownership}}/{{property.Maxbathrooms}}/{{property.Maxreception}}/{{property.PropertyCondition}}/{{property.Country}}/{{property.id}}/{{property.PropertyFor}}">Edit<span class="entity-see-deatil outputText">
+              &gt;</span></div>
+            <div class="dark-blue-button" routerLink="/sellerMatchlisting/{{property.Lookingpostcode}}/{{property.PropertyType}}/{{property.LookingTown}}/{{property.MaxAmount}}/{{property.latitude}}/{{property.longitude}}/{{newUser}}/{{property.PropertyFor}}/{{property.Lookingstate}}/{{property.Maxrooms}}/{{property.PropertyCondition}}/{{property.LookingAddress}}/{{property.ownership}}/{{property.features}}/{{property.UserId}}/{{property.Maxbathrooms}}/{{property.Maxreception}}/{{property.ownership}}/{{property.Maxrooms}}/{{property.id}}">Potential<span class="entity-see-deatil outputText">
+              &gt;</span></div>
+            <div class="dark-blue-button" routerLink="/listingsellerpropertydetail/{{property.MaxAmount}}/{{property.PropertyType}}/{{property.Lookingpostcode}}/{{property.Maxrooms}}/{{property.Maxreception}}/{{property.PropertyCondition}}/{{property.Maxbathrooms}}/{{property.id}}">See Details<span class="entity-see-deatil outputText">
+              &gt;</span></div>
+          </div>
+        </div>
+    
+        
+      </div>
+
+
+
+   
+    
+    
+    
+    </mat-tab>
+  
+  </mat-tab-group>
+

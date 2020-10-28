@@ -1,0 +1,79 @@
+<!-- Loading spinner -->
+
+
+
+<div *ngIf="isBuyer" class="loading-container">
+  <mat-progress-spinner mode="indeterminate"></mat-progress-spinner>
+</div>
+<div *ngIf="isLoading" class="loading-container">
+  <mat-progress-spinner mode="indeterminate"></mat-progress-spinner>
+</div>
+
+
+
+
+<div class="container confirm-main-container">
+  <div class="Mat-card-div">
+    <div class="details-p-headings heading-nestimate">Pincode</div>
+    <div class="details-output-p ">{{stateService.listingSeller.Lookingpostcode}}</div>
+  </div>
+  <div class="Mat-card-div">
+    <div class="details-p-headings heading-nestimate">Country</div>
+    <div class="details-output-p ">{{stateService.listingSeller.Country}}</div>
+  </div>
+  <div class="Mat-card-div">
+    <div class="details-p-headings heading-nestimate">Address</div>
+    <div class="details-output-p ">{{stateService.listingSeller.LookingAddress}}</div>
+  </div>
+  <div class="Mat-card-div">
+    <div class="details-p-headings heading-nestimate">Property condition</div>
+    <div class="details-output-p ">{{stateService.listingSeller.PropertyCondition}}</div>
+  </div>
+  <div class="Mat-card-div">
+    <div class="details-p-headings heading-nestimate">Ownership</div>
+    <div class="details-output-p ">{{stateService.listingSeller.ownership}}</div>
+  </div>
+
+  <div class="Mat-card-div">
+    <div class="details-p-headings heading-nestimate">Property type</div>
+    <div class="details-output-p ">{{stateService.listingSeller.PropertyType}}</div>
+  </div>
+
+  <div class="Mat-card-div">
+    <div class="details-p-headings heading-nestimate">Applicable feature</div>
+    <div class="details-output-p ">{{stateService.listingSeller.features}}</div>
+  </div>
+
+</div> 
+  <div class="endind-button mt-5">
+    <div class="button-take-Matches" routerLink="/fillformseller/{{listingSeller.Lookingpostcode}}/{{listingSeller.LookingAddress}}/{{listingSeller.LookingTown}}/{{listingSeller.Lookingstate}}/{{listingSeller.PropertyType}}/{{listingSeller.Maxrooms}}/{{listingSeller.MaxAmount}}/{{listingSeller.ownership}}/{{listingSeller.Maxbathrooms}}/{{listingSeller.Maxreception}}/{{listingSeller.PropertyCondition}}/{{listingSeller.Country}}">
+      <span class="more-than-arrow">&lt; </span>
+      <span class="main-text">Back</span>
+     
+    </div>
+
+    <!-- <button type="button" class="btn btn-back" >Back</button> -->
+   
+    <div class="button-take-Matches" (click)="overLay()">
+      <span class="main-text">Next</span>
+      <span class="more-than-arrow"> &gt; </span>
+    </div>
+    <!-- <button type="button" class="btn btn-next" (click)="submitBuyer()">Submit</button> -->
+  </div>
+
+   <div class="overlay-conform-buyer" *ngIf="register">
+     <div class="confirm-image-main">
+ <div class="overlay-image">
+   <img src="../../../../../assets/Images/thumbsup.png" class="thumbs-up-image">
+ </div>
+ <div class="thank-you-text">
+
+  Thanks for
+registering
+ </div>
+<div class="button-take-Matches" (click)="sellerForm()">
+  <span class="main-text">Continue</span>
+  <span class="more-than-arrow"> &gt; </span>
+</div>
+</div>
+   </div>

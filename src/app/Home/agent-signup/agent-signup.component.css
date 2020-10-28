@@ -1,0 +1,42 @@
+
+
+.dark-button
+{
+    background-color: var( --DARK-BLUE-COLOR);
+    padding: 0.7em;
+    color: white;
+    width: 35%;
+    text-align: center;
+    margin: 1em;
+    margin-bottom: 0.5em;
+
+}
+.agent-signup-background {
+    /* height: 10vh; */
+    overflow: auto;
+}
+
+.Light-button
+{
+    background-color: var( --light-blue-color);
+    padding: 0.7em;
+    color: white;
+    width: 35%;
+    text-align: center;
+    margin: 1em;
+    margin-top: 0.5em;
+}
+.extra-buttons {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 16em;
+    width: 100%;
+    justify-content: flex-end;
+    margin: 0em;
+  
+
+}
+img.image-background-agent {
+    height: 50vh;
+}

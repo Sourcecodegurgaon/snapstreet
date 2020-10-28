@@ -1,0 +1,95 @@
+<div *ngIf="isBuyerSelected" class="loading-container">
+  <mat-progress-spinner mode="indeterminate"></mat-progress-spinner>
+</div>
+<div class="property-selected-detail-background">
+  <div class="container property-detail-container">
+    <h3 class="property-detail-h3">{{usertitle}} {{userName | shortName}}</h3>
+    <div class="wrapper-detail-container">
+      <div class="streetname">
+        <div class="Mat-card-div">
+          <div class="details-p-headings heading-nestimate" *ngIf="PropertyFor=='buy'">Seller Desired Price</div>
+          <div class="details-p-headings heading-nestimate" *ngIf="PropertyFor=='rent'">Seller Desired Rent</div>
+
+          <div class="details-output-p outputText">{{price}}</div>
+       </div>
+
+        <div class="Mat-card-div">
+          <div class="details-p-headings heading-nestimate">Seller Postcode</div>
+          <div class="details-output-p outputText">{{postcode}}</div>
+       </div>
+
+        <div class="Mat-card-div">
+          <div class="details-p-headings heading-nestimate">Seller Streetname</div>
+          <div class="details-output-p outputText">{{Streetname}}</div>
+       </div>
+
+        <div class="Mat-card-div">
+          <div class="details-p-headings heading-nestimate">Seller Property Type</div>
+          <div class="details-output-p outputText">{{PropertyTypes}}</div>
+       </div>
+        <div class="Mat-card-div">
+          <div class="details-p-headings heading-nestimate">Seller No of Bedrooms</div>
+          <div class="details-output-p outputText">{{Maxroom}}</div>
+       </div>
+
+        <div class="Mat-card-div">
+          <div class="details-p-headings heading-nestimate">Seller Ownership</div>
+          <div class="details-output-p outputText">{{ownerships}}</div>
+       </div>
+
+        <div class="Mat-card-div">
+          <div class="details-p-headings heading-nestimate">Seller Property Condition</div>
+          <div class="details-output-p outputText">{{PropertyCondition}}</div>
+       </div>
+
+        <div class="Mat-card-div">
+          <div class="details-p-headings heading-nestimate">Seller Bathrooms</div>
+          <div class="details-output-p outputText">{{Bathrooms}}</div>
+       </div>
+
+        <div class="Mat-card-div">
+          <div class="details-p-headings heading-nestimate">Seller Reception</div>
+          <div class="details-output-p outputText">{{Reception}}</div>
+       </div>
+
+        <div class="Mat-card-div">
+          <div class="details-p-headings heading-nestimate">Seller Property Features</div>
+          <div class="details-output-p outputText">{{features}}</div>
+       </div>
+        <div class="selected-button m-3">
+          <button mat-raised-button color="primary" (click)="backClicked()">Back</button>
+          <button mat-raised-button color="primary" (click)="Overlayopen()" *ngIf="expressed=='false'">Express Interest</button>
+          <!-- <button mat-raised-button color="primary"   *ngIf="expressed=='true'"disabled>Express Interest</button> -->
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+
+  <div class="continue-form" *ngIf="overlay">
+
+    <div class="continue-form-data">
+      <div class="nestimate-logo">
+        <img src="../../../../assets/Images/single-nestimate.jpg" class="nestimate-logo">
+
+      </div>
+      <div class="continue-text">
+        <p class="overlay-text">{{notificationContent}}</p>
+
+
+      </div>
+
+
+      <div class="continue-button" (click)="submitForm()">
+        <div class="new-buttons-dark-continue">
+          OK 	<span class="greater-sign">&gt;</span>
+        </div>
+    
+        <div class="new-buttons-dark-continue" (click)="continueClose()">
+          <span class="lessthan-sign">&lt;</span>  CANCEL
+        </div>
+     
+        </div>
+      </div>
+    </div>

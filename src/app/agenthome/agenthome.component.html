@@ -1,0 +1,318 @@
+
+<div class="main-template-form"  *ngIf="!loggedIn"> 
+  <div class="new-form-mat-card" *ngIf="!loggedIn">
+    <div class="top-image-Login-form">
+      <img src="assets/Images/Nestimatelogo1.png" class="top-image-Login-Form">
+    </div>
+    <div class="login-form-heading">
+      <h3 class="heading-text">Sign-In</h3>
+    </div>
+
+    <div class="form-group new-form-group">
+      <label>Email</label>
+      <input type="text" class="form-control custom-field" type="email" name="emails" #userEmailLogin
+        [(ngModel)]="emails" placeholder="Enter Email" *ngIf="!emailField">
+        <span class="email-text-written" *ngIf="notValidEmail" style="color: red;">{{validity}}</span>
+      <span class="email-text-written" *ngIf="emailField">{{emails}}</span>
+    </div>
+    <div class="form-group new-form-group" *ngIf="emailField">
+      <label>Password</label>
+      <input type="password" class="form-control custom-field" name="passs" #userPasswordLogin type="password"
+        [(ngModel)]="passs" placeholder="Enter Password">
+    </div>
+    <div class="a-section" >
+      <span id="continue" class="a-button a-button-span12 a-button-primary" *ngIf="!emailField" (click)="validateEmail(emails)"><span class="a-button-inner"><input
+            id="continue" tabindex="5" class="a-button-input" type="submit" aria-labelledby="continue-announce" /><span
+            id="continue-announce" class="a-button-text" aria-hidden="true">
+            Continue
+          </span></span></span>
+          <span id="continue" class="a-button a-button-span12 a-button-primary" *ngIf="emailField" (click)="login(emails, passs)"><span class="a-button-inner" ><input
+            id="continue" tabindex="5" class="a-button-input" type="submit" aria-labelledby="continue-announce" /><span
+            id="continue-announce" class="a-button-text" aria-hidden="true">
+            SignIn
+          </span></span></span>
+      <div id="legalTextRow" class="a-row a-spacing-top-medium a-size-small">
+        By signing-in you agree to Nestimates's <a href="/#/terms">Conditions of Use & Sale</a>. Please see our <a
+          href="/#/PrivacyPolicy">Privacy Notice</a>.
+      </div>
+    </div>
+  </div>
+  <div class="signup-bottom-card" *ngIf="!SignUp">
+    <div class="a-divider a-divider-break">
+      <h5>New to Nestimate?</h5>
+    </div>
+    <span id="auth-create-account-link" class="a-button-signup a-button-span12 a-button-base" routerLink="/Agentsignupform"><span
+        class="a-button-inner"><span id="createAccountSubmit" tabindex="6" class="a-button-text" role="button">
+          Create your Nestimate account
+        </span></span></span>
+  </div>
+
+</div>
+<div *ngIf="loggedIn">
+
+<!--Top Area started-->
+<div class="agent-top-heading-area">
+
+    <div class="top-area-content-agent">
+
+        <div class="top-area-agent-photo">
+      <img src="http://134.209.93.8{{Image}}" class="image-agent"> 
+        </div>
+
+        <div class="top-agent-heading">
+            <span class="outputText compnay-name-text">{{Companyname}}</span>
+
+        </div>
+    </div>
+</div>
+<!--Top Area Ended-->
+
+
+<!--Detail Area started-->
+
+<div class="details-user-agent">
+
+    <div class="heading-item-detail-user">
+   
+        <span class="outputText">Name :</span>
+
+    </div>
+
+    <div class="heading-detail-user-output">
+
+        <span class="outputText">{{Fullname}}</span>
+
+    </div>
+
+</div>
+<div class="details-user-agent">
+
+    <div class="heading-item-detail-user">
+   
+        <span class="outputText">Address :</span>
+
+    </div>
+
+    <div class="heading-detail-user-output">
+
+       <span class="outputText">{{Address}}</span> 
+
+    </div>
+
+</div>
+<div class="details-user-agent">
+
+    <div class="heading-item-detail-user">
+   
+        <span class="outputText">Postcode :</span>
+
+    </div>
+
+    <div class="heading-detail-user-output">
+
+       <span class="outputText">{{Postcode}}</span>
+
+    </div>
+
+</div>
+<div class="details-user-agent">
+
+    <div class="heading-item-detail-user">
+   
+        <span class="outputText">Phone Number :</span>
+
+    </div>
+
+    <div class="heading-detail-user-output">
+
+ <span class="outputText">{{Phonenumber}}</span> 
+
+    </div>
+
+</div>
+<div class="details-user-agent">
+
+    <div class="heading-item-detail-user">
+   
+        <span class="outputText">Job title :</span>
+
+    </div>
+
+    <div class="heading-detail-user-output">
+
+       <span class="outputText">{{Jobtitle}}</span>
+
+    </div>
+
+</div>
+<div class="details-user-agent">
+
+    <div class="heading-item-detail-user">
+   
+        <span class="outputText">Sole Agency Fees :</span>
+
+    </div>
+
+    <div class="heading-detail-user-output">
+
+ <span class="outputText">{{SinglePercentage}}%</span> 
+
+    </div>
+
+</div>
+<div class="details-user-agent">
+
+    <div class="heading-item-detail-user">
+   
+        <span class="outputText">Multiple Agency Fees :</span>
+
+    </div>
+
+    <div class="heading-detail-user-output">
+
+        <span class="outputText">{{Multipercentage}}%
+        </span> 
+
+    </div>
+
+</div>
+
+<div class="edit-detail-button">
+
+ <span class="edit-button-span" routerLink="/editagentDetail/{{id}}">Edit</span> 
+
+</div>
+
+
+
+
+
+
+<div class="tab-area">
+    <mat-tab-group mat-align-tabs="start" class="agent-tabs" >
+        <!-- #enddocregion align-start -->
+          <mat-tab label="Action Required" *ngIf="BuyerDetail.length > 0">
+
+              
+      <div class="mat-card-content-new m" *ngFor="let agent of BuyerDetail">
+        <div class="not-expressed" >
+          <div class="netimate-content">
+            <div class="nestimate-image">
+              <img src="../../../../../../assets/Images/sidelogo.png" class="match-images">
+            </div>
+            <span class="buy-option" >
+              <div class="nestimate-price-range">
+                <span class="heading-nestimate" >Desired Price</span> 
+               
+                <br>
+                <span class="outputText price-font">&pound;{{agent.MinAmount}} - &pound;{{agent.MaxAmount}}</span>
+              </div>
+              <div class="nestimate-content">
+                <div class="heading-nestimate nestimate-content-p1">Position:<span
+                    class="outputText">{{agent.ChainStatus}}</span></div>
+                <div class="heading-nestimate nestimate-content-p1">PropertyType:<span
+                    class="outputText">{{agent.PropertyType}}</span></div>
+              </div>
+            </span>
+    
+    
+            <div class="button-container">
+              <div class="dark-blue-button" routerLink="/selectedAgentbuyerdetail/{{agent.MinAmount}}/{{agent.MaxAmount}}/{{agent.ChainStatus}}/{{agent.PropertyType}}/{{agent.Postcode}}/{{agent.PropertyFor}}/{{agent.AgentUid}}/{{agent.BuyerUid}}/{{agent.SellerUid}}">See Details<span class="entity-see-deatil outputText">
+                  &gt;</span></div>
+            </div>
+    
+    
+          </div>
+        </div>
+      </div>
+
+
+
+      <!-- <div class="mat-card-content-new m">
+        <div class="not-expressed" >
+          <div class="nestimate_by">
+    
+            <div class="card-heading-font outputText">&nbsp;Nestimate by R.N</div>
+          </div>
+    
+    
+          <div class="netimate-content">
+            <div class="nestimate-image">
+              <img src="../../../../../../assets/Images/sidelogo.png" class="match-images">
+            </div>
+            <span class="buy-option" >
+              <div class="nestimate-price-range">
+                <span class="heading-nestimate" >Desired Price</span> 
+               
+                <br>
+                <span class="outputText price-font">&pound;6000 - &pound;70000</span>
+              </div>
+              <div class="nestimate-content">
+                <div class="heading-nestimate nestimate-content-p1">Buyer Position:<span
+                    class="outputText">Cash Buyer</span></div>
+                <div class="heading-nestimate nestimate-content-p1">Financial Status:<span
+                    class="outputText">First Time Buyer</span></div>
+              </div>
+            </span>
+    
+    
+            <div class="button-container">
+              <div class="dark-blue-button" >See Details<span class="entity-see-deatil outputText">
+                  &gt;</span></div>
+            </div>
+    
+    
+          </div>
+        </div>
+      </div> -->
+
+
+          </mat-tab>
+          <!-- <mat-tab label="Seller" *ngIf="agentsSeller.length > 0">
+
+
+            <div class="mat-card-content-new m" *ngFor="let agent of agentsSeller">
+                <div class="not-expressed" >
+              
+            
+            
+                  <div class="netimate-content">
+                    <div class="nestimate-image">
+                      <img src="../../../../../../assets/Images/sidelogo.png" class="match-images">
+                    </div>
+                    <span class="buy-option" >
+                      <div class="nestimate-price-range">
+                        <span class="heading-nestimate" >Desired Price</span> 
+                       
+                        <br>
+                        <span class="outputText price-font">&pound;{{agent.MaxAmount}}</span>
+                      </div>
+                      <div class="nestimate-content">
+                        <div class="heading-nestimate nestimate-content-p1">Postcode:<span
+                            class="outputText">{{agent.Lookingpostcode}}</span></div>
+                        <div class="heading-nestimate nestimate-content-p1">No of Rooms:<span
+                            class="outputText">{{agent.Roomsmax}}</span></div>
+                      </div>
+                    </span>
+            
+            
+                    <div class="button-container">
+                      <div class="dark-blue-button" routerLink="/sellerSelectedagent/{{agent.LookingAddress}}/{{agent.LookingTown}}/{{agent.Lookingpostcode}}/{{agent.Lookingstate}}/{{agent.MaxAmount}}/{{agent.Maxbathroom}}/{{agent.Maxbathrooms}}/{{agent.Maxreception}}/{{agent.PropertyCondition}}/{{agent.PropertyType}}/{{agent.Roomsmax}}/{{agent.ownership}}/{{agent.UserId}}">See Details<span class="entity-see-deatil outputText">
+                          &gt;</span></div>
+                    </div>
+            
+            
+                  </div>
+                </div>
+              </div>
+
+
+
+       
+
+          </mat-tab>
+        -->
+        </mat-tab-group>
+
+</div>
+</div>

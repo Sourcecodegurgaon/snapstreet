@@ -1,0 +1,154 @@
+.profile-main-container
+{
+    padding-right: 8px;
+    padding-left: 8px;
+    background-color: #EBEBEB;
+padding-bottom: 60px;
+    margin: 0;
+}
+.Profile-pic {
+    width: 25%;
+ 
+}
+p.profile-heading {
+    /* text-align: center; */
+    display: flex;
+    justify-content: space-around;
+    align-content: center;
+    align-items: center;
+    font-size: 27px;
+    padding-top: 7px;
+}
+.profile-name-image {
+    display: flex;
+    /* justify-content: space-evenly; */
+    justify-content: space-evenly;
+    align-items: center;
+    align-content: center;
+}
+.profile-name {
+    font-size: 25px;
+   
+
+}
+.profile-name-field-option   
+{
+    background-color: #f5f5f5;
+    
+
+}
+.grid-container {
+ 
+    flex-direction: column;
+    align-items: end;
+  }
+  
+  .grid-container > div {
+ 
+
+    padding: 0px 5px;
+   
+  }
+  .fname-text1 {
+    font-size: 20px;
+  
+
+}
+.fname-text2 {
+    font-size: 20px;
+   
+
+}
+.fname-text3 {
+    font-size: 15px;
+
+
+}
+
+.edit-profile-submitbutton {
+    display: flex;
+    justify-content: space-evenly;
+    align-content: center;
+    align-items: center;
+    margin-top: 25px;
+}
+.btn-back {
+    background-color: var(--DARK-BLUE-COLOR);
+    /* width: 31%; */
+    padding: 0.6em 3em;
+    color: white;
+    font-size: 14px;
+   
+}
+p{
+    margin-bottom: 0px;
+}
+.example-full-width {
+    width: 100% !important;
+  }
+  .prefrence-notification
+{
+    background-color: white;
+  
+}
+.prefrence-radio {
+    margin: 20px;
+}
+.notification-heading {
+    padding-top: 10px;
+    font-size: 22px;
+    font-weight: normal;
+    margin-bottom: 0px;
+}
+.radio-text
+{
+    font-family: 'Roboto', sans-serif !important;
+    font-weight: 400;
+    color:black;
+}
+.loading-container {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    display: -webkit-box;
+    display: flex;
+    -webkit-box-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    align-items: center;
+    z-index: 9;
+    background: black;
+    opacity: 0.5;
+  }
+  .extra-field-two {
+
+    min-height: 5vh;
+    max-height: 4em;
+    margin-bottom: 1em;
+    border-radius: 8px;
+  }
+  .line-break-field
+{
+  max-width: 55vw;
+  word-wrap: break-word !important;
+  float: right;
+  line-height: 1.3;
+}
+.extra-field-address
+{
+  min-height: 5vh;
+  max-height: 5.5em;
+  margin-bottom: 1em;
+  border-radius: 8px;
+  width: 100%;
+}
+label.form-check-label {
+    display: flex;
+    align-items: baseline;
+}
+.radio-top-buyer {
+    display: flex;
+    flex-direction: column;
+}

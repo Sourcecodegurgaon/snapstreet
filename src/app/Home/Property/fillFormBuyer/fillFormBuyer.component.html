@@ -1,0 +1,912 @@
+<!-- Loading spinner -->
+<div *ngIf="isLoading" class="loading-container">
+  <mat-progress-spinner mode="indeterminate"></mat-progress-spinner>
+</div>
+
+
+<!--Login-Form  *-->
+
+<div class="continue-form" *ngIf="overlay">
+  <div class="nestimate-logo">
+    <img src="../../../../assets/Images/single-nestimate.jpg" class="nestimate-logo">
+
+  </div>
+  <div class="continue-text">
+    <p class="overlay-text">Thanks for registering!</p>
+    <p class="overlay-text">{{notificationContent }}
+    </p>
+
+  
+  </div>
+  <div class="continue-button" (click)="continueClose()">
+    <div class="button-take-Matches" (click)="continueClose()">
+      <span class="main-text">Continue</span>
+      <span class="more-than-arrow"> &gt; </span>
+    </div>
+  </div>
+
+
+</div>
+<div class="main-template-form"  *ngIf="!isLoggedIn"> 
+  <div class="new-form-mat-card" *ngIf="!SignUp">
+    <div class="top-image-Login-form">
+      <img src="assets/Images/Nestimatelogo1.png" class="top-image-Login-Form">
+    </div>
+    <div class="login-form-heading">
+      <h3 class="heading-text">Sign-In</h3>
+    </div>
+
+    <div class="form-group new-form-group">
+      <label>Email</label>
+      <input type="text" class="form-control custom-field" type="email" name="emails" #userEmailLogin
+        [(ngModel)]="emails" placeholder="Enter Email" *ngIf="!emailField">
+        <span class="email-text-written" *ngIf="notValidEmail" style="color: red;">{{validity}}</span>
+      <span class="email-text-written" *ngIf="emailField">{{emails}}</span>
+    </div>
+    <div class="form-group new-form-group" *ngIf="emailField">
+      <label>Password</label>
+      <input type="password" class="form-control custom-field" name="passs" #userPasswordLogin type="password"
+        [(ngModel)]="passs" placeholder="Enter Password">
+    </div>
+    <div class="a-section" >
+      <span id="continue" class="a-button a-button-span12 a-button-primary" *ngIf="!emailField" (click)="validateEmail(emails)"><span class="a-button-inner"><input
+            id="continue" tabindex="5" class="a-button-input" type="submit" aria-labelledby="continue-announce" /><span
+            id="continue-announce" class="a-button-text" aria-hidden="true">
+            Continue
+          </span></span></span>
+          <span id="continue" class="a-button a-button-span12 a-button-primary" *ngIf="emailField" (click)="loginUser(emails, passs)"><span class="a-button-inner" ><input
+            id="continue" tabindex="5" class="a-button-input" type="submit" aria-labelledby="continue-announce" /><span
+            id="continue-announce" class="a-button-text" aria-hidden="true">
+            SignIn
+          </span></span></span>
+      <div id="legalTextRow" class="a-row a-spacing-top-medium a-size-small">
+        By signing-in you agree to Nestimates's <a href="/#/terms">Conditions of Use & Sale</a>. Please see our <a
+          href="/#/PrivacyPolicy">Privacy Notice</a>.
+      </div>
+    </div>
+  </div>
+  <div class="signup-bottom-card" *ngIf="!SignUp">
+    <div class="a-divider a-divider-break">
+      <h5>New to Nestimate?</h5>
+    </div>
+    <span id="auth-create-account-link" class="a-button-signup a-button-span12 a-button-base" (click)="newCustomeer()"><span
+        class="a-button-inner"><span id="createAccountSubmit" tabindex="6" class="a-button-text" role="button">
+          Create your Nestimate account
+        </span></span></span>
+  </div>
+
+
+  <div class="new-form-mat-card" *ngIf="SignUp">
+    <div class="top-image-Login-form">
+      <img src="assets/Images/Nestimatelogo1.png" class="top-image-Login-Form">
+    </div>
+    <div class="login-form-heading">
+      <h3 class="heading-text">Sign-Up</h3>
+    </div>
+      
+    <div class="form-group new-form-group">
+      <label>Name</label>
+      <input type="text" class="form-control custom-field" placeholder="Full Name" name="name"  [(ngModel)]="name" #displayName>
+    </div>
+    <div class="form-group new-form-group">
+      <label>Email</label>
+      <input type="text" class="form-control custom-field" type="email" name="emails" #userEmailLogin
+        [(ngModel)]="emails" placeholder="Enter Email" >
+      <span class="email-text-written" *ngIf="emailField">{{emails}}</span>
+    </div>
+    <div class="form-group new-form-group" >
+      <label>Password</label>
+      <input type="password" class="form-control custom-field" name="passs" #userPasswordLogin type="password"
+        [(ngModel)]="passs" placeholder="Enter Password">
+    </div>
+
+  
+ 
+          <section class="example-section property-con-form">
+
+            <mat-checkbox class="example-margin heading-nestimate" value="Email">Email</mat-checkbox>
+            <mat-checkbox class="example-margin heading-nestimate" value="SMS">SMS</mat-checkbox>
+            <mat-checkbox class="example-margin heading-nestimate" value="Post">Post</mat-checkbox>
+            <mat-checkbox class="example-margin heading-nestimate" value="All">Email,SMS and Post from acrefully
+              selected<br> third port
+            </mat-checkbox>
+            <label for="text" class="heading-nestimate ">{{topLine}}</label>
+            <label for="text" class="heading-nestimate policy">{{secondLine}}</label>
+          </section>
+
+          <div class="a-section"  (click)="registerNewUsers(name,emails,passs)">
+            <span id="continue" class="a-button a-button-span12 a-button-primary"><span class="a-button-inner"><input
+                  id="continue" tabindex="5" class="a-button-input" type="submit" aria-labelledby="continue-announce" /><span
+                  id="continue-announce" class="a-button-text" aria-hidden="true">
+                  SignUp
+                </span></span></span>
+    </div>
+
+    
+  </div>
+  <div class="signup-bottom-card" *ngIf="SignUp">
+    <div class="a-divider a-divider-break">
+      <h5>Already have account?</h5>
+    </div>
+    <span id="auth-create-account-link" class="a-button-signup a-button-span12 a-button-base" (click)="alreadyUser()"><span
+        class="a-button-inner"><span id="createAccountSubmit" tabindex="6" class="a-button-text" role="button">
+          Already have account?
+        </span></span></span>
+  </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+<!--Login-form-end-->
+
+<div class="main-container-buyer">
+<form *ngIf="isLoggedIn">
+  <mat-tab-group #matgroup class="form-tab-conatiner" [selectedIndex]="selectedIndex">
+    <mat-tab label="Personal Details " class="tabs-align-padding">
+      <div class="tab-pane active tabs-align-padding" role="tabpanel" id="step1">
+        <div class="card-margin background-new-form">
+          <mat-card-title class="mat_card_title">
+
+
+            <p class="forms-heading new-heading-nestimate">Personal Details</p>
+          </mat-card-title>
+          <p class="forms-star new-heading-nestimate">*required</p>
+
+          <div class="extra-field" >
+          <mat-form-field appearance="outline">
+            <mat-label class="fixed-Label">
+             <span id="title"> Title*</span>
+
+             </mat-label>
+     
+            <mat-select name="title" [(ngModel)]="title" class="drop-down-list" #titles  >
+              <mat-option value="Mr">Mr</mat-option>
+              <mat-option value="Ms">Ms</mat-option>
+              <mat-option value="Mrs">Mrs</mat-option>
+            </mat-select>
+         
+          </mat-form-field>
+        </div>
+        <div class="extra-field-two" >
+          <mat-form-field class="example-full-width"  appearance="outline">
+            <mat-label class="fixed-Label">
+            <span id="Name">Full Name*</span>
+            </mat-label>
+        
+            <input matInput  name="Name" class="mat-mail-input" [(ngModel)]="Name" #Names >
+          </mat-form-field>
+        </div>
+          <div class="extra-field-two" >
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label class="fixed-Label">
+              <span id="email">Email Address*</span></mat-label>
+    
+            <input matInput  name="Email" class="mat-mail-input" [(ngModel)]="email"
+               #emails>
+          </mat-form-field>
+</div>
+
+
+
+          <!--Date Of Birth Field-->
+          <div class="extra-field-two" >
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label class="fixed-Label"><span id="dob">DD/MM/YYYY</span></mat-label>
+            <input matInput [matDatepicker]="picker"  name="DOB" class="mat-mail-input"
+              value="DOB" [(ngModel)]="DOB"  #dobs  >
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+          </div>
+          <!--Date Of Birth Field End-->
+
+
+          <!--Phone Number field-->
+          <div class="extra-field-two" >
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label class="fixed-Label">
+             <span id="tele">Phone Number*</span>
+            </mat-label>
+
+            <span matPrefix>+44&nbsp;</span>
+            <input matInput name="phonenumber"  [(ngModel)]="Phone"   maxlength="10" #tele>
+          </mat-form-field>
+</div>
+          <!--Phone Number field-->
+
+  
+
+
+          <mat-form-field class="example-full-width" *ngIf="other">
+            <input matInput placeholder="other" name="other" class="mat-mail-input" >
+          </mat-form-field>
+
+        </div>
+
+
+        <div class="card-margin background-new-form">
+
+          <label class="new-heading-nestimate h1Styles">Your Address</label>
+          <p class="new-heading-nestimate"><span id="Cpost">Area - Search by Postcode</span></p>
+      
+          <mat-option class="postcode-background" style="border: 1px solid #d2d2d2;border-radius: 3px;" id="Cpost">
+            <div class="extra-field-three" >
+           
+            <input [formControl]="autoCompleteControlCurrent" type="text" 
+              aria-label="Post-Code" placeholder="Enter Postcode*" matInput [matAutocomplete]="auto" [(ngModel)]="listingBuyer.Currentpostcode" minlength="5" #Currentpostcode>
+            <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete"
+              (optionSelected)='getPost($event.option.value)'>
+              <mat-option *ngFor="let item of addressianAutoCompleteCurrent$ | async; let index=index" [value]="item">
+                <span *ngFor="let i of item.address">{{i}} </span> | <span>{{ item.postcode | titlecase}}
+                </span> | <span>{{ item.citytown | titlecase}}</span>
+              </mat-option>
+            </mat-autocomplete>
+          </div>
+          </mat-option>
+
+
+  <div class="extra-field-two" >
+          <mat-form-field class="example-full-width" appearance="outline" >
+            <mat-label class="fixed-Label"><span id="Ctown">Town/City*</span></mat-label>
+            <input matInput  [(ngModel)]="listingBuyer.CurrentTown" name="CurrentTowncity"
+              class="mat-mail-input"   #currentTown>
+          </mat-form-field>
+</div>
+
+<div class="extra-field-two" >
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label class="fixed-Label"><span id="caddress">Full Address*</span></mat-label>
+           
+            <input matInput   name="CurrentAddress"
+              class="mat-mail-input" [(ngModel)]="listingBuyer.CurrentAddress" #CurrentAddress>
+         
+            
+          </mat-form-field>
+</div>
+<div class="extra-field-two" >
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label class="fixed-Label"><span id="cState">County*</span></mat-label>
+        
+            <input matInput  [(ngModel)]="listingBuyer.Currentstate" name="Currentstate"
+              class="mat-mail-input" #Currentstate >
+          </mat-form-field>
+</div>
+
+<div class="extra-field-two" >
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label class="fixed-Label"><span id="ccountry">Country*</span></mat-label>
+        
+            <input matInput   name="state" class="mat-mail-input"
+              [(ngModel)]="listingBuyer.Currentcountry" name="Currentcountry" #Currentcountry>
+          </mat-form-field>
+</div>
+</div>
+        <div class="button-next">
+          <a (click)="selectTab(1, 0)" mat-raised-button color="primary">Next</a>
+        </div>
+
+      </div>
+ 
+    </mat-tab>
+
+    <mat-tab label="Property Details" class="tabs-align-padding">
+      <div class="tabs-align-padding">
+
+
+
+        <div class="card-margin background-new-form">
+          <mat-card-title class="mat_card_title new-heading-nestimate"><span id="propfor">are you looking to</span></mat-card-title>
+     
+          <mat-radio-group aria-label="Select an option" class="radio-top-buyer" name="PropertyFor"
+            [(ngModel)]="listingBuyer.PropertyFor" (click)="check()" (change)="radioChange($event)"  >
+            <mat-radio-button value="buy" >Buy</mat-radio-button>
+            <mat-radio-button value="rent">Rent</mat-radio-button>
+          </mat-radio-group>
+      <br>
+          <mat-card-title class="mat_card_title new-heading-nestimate">Please fill in the details of your desired
+            property</mat-card-title>
+          <p class="mt-4 new-heading-nestimate"><span id="lookpost">Area - Search by Postcode</span></p>
+          <mat-option style="border: 1px solid #d2d2d2;border-radius: 3px;" >       
+            <input [formControl]="autoCompleteControlLooking" type="text" 
+              aria-label="Post Code" matInput [matAutocomplete]="autolooking" [(ngModel)]="listingBuyer.Lookingpostcode"
+              name="Lookingpostcode" minlength="5"   #Lookingpostcode placeholder="Enter Postcode*">
+            <mat-autocomplete autoActivesecondOption #autolooking="matAutocomplete"
+              (optionSelected)='getPosts($event.option.value)'>
+              <mat-option *ngFor="let item of addressianAutoCompleteLooking$ | async; let index=index" [value]="item">
+                <span *ngFor="let i of item.address">{{i}} </span> | <span>{{ item.postcode | titlecase}}
+                </span> | <span>{{ item.citytown | titlecase}}</span>
+              </mat-option>
+            </mat-autocomplete>
+    
+          </mat-option>
+
+
+
+          <p class="mt-4" class="new-heading-nestimate">Area - Search by Address</p>
+          <div class="extra-field-two"  >
+          <mat-form-field class="example-full-width mb-3" appearance="outline">
+            <mat-label class="fixed-Label"><span id="lsrname">Street Name*</span></mat-label>
+            <input matInput  class="mat-mail-input" [(ngModel)]="listingBuyer.LookingStreetname" name="LookingStreetname"  #LookingStreetname>
+          </mat-form-field>
+
+</div>
+<div class="extra-field-two" >
+          <mat-form-field class="example-full-width mb-3" appearance="outline">
+            <mat-label class="fixed-Label"><span id="looktow">Town/City*</span></mat-label>
+            <input matInput  [(ngModel)]="listingBuyer.LookingTown" name="LookingTown"
+              class="mat-mail-input"  #LookingTown>
+          </mat-form-field>
+</div>
+<div class="extra-field-two" >
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label class="fixed-Label"><span id="Lookstate">County*</span></mat-label>
+            <input matInput  
+              [(ngModel)]="listingBuyer.Lookingstate" name="Lookingstate" class="mat-mail-input"  #Lookingstate>
+          </mat-form-field>
+          </div>
+
+          <div class="extra-field-two" >
+          <mat-form-field class="example-full-width" appearance="outline" >
+            <mat-label class="fixed-Label"><span id="lCountry">Country*</span></mat-label>
+            <input matInput  
+              [(ngModel)]="listingBuyer.Country" name="Country" class="mat-mail-input"  #Country>
+          </mat-form-field>
+          </div>
+        </div> 
+
+
+
+
+
+        <div class="card-margin background-new-form">
+
+
+       
+          <div class="extra-field-two"  *ngIf="rentOption">
+           <mat-form-field class="example-full-width"  appearance="outline">
+            <mat-label class="fixed-Label"><span id="chain">Your Renting Position*</span></mat-label>
+
+            <mat-select name="ChainStatus" [(ngModel)]="listingBuyer.ChainStatus" value="ChainStatus"
+              class="example-full-width"   #ChainStatus>
+              <mat-option value="Ready to move in now" (click)="otherOption()">Ready to move in now</mat-option>
+              <mat-option value="Looking to move in short-term" (click)="otherOption()">Looking to move in short-term</mat-option>
+            </mat-select>
+          </mat-form-field>
+          </div>
+
+
+          <div class="extra-field-two"  *ngIf="buyOption">
+            <mat-form-field class="example-full-width" appearance="outline">
+              <mat-label class="fixed-Label"><span id="chain">Your Buying Position*</span></mat-label>
+
+              <mat-select name="ChainStatus" [(ngModel)]="listingBuyer.ChainStatus" value="ChainStatus"
+                class="example-full-width"  #ChainStatus>
+                <mat-option value="First Time Buyer" (click)="otherOption()">First Time Buyer</mat-option>
+                <mat-option value="In Chain" (click)="otherOption()">In Chain</mat-option>
+                <mat-option value="Cash Buyer" (click)="otherOption()">Cash Buyer</mat-option>
+                <mat-option value="Other (Please specify)" (click)="otherChain()">Other (Please specify)</mat-option>
+              </mat-select>
+            </mat-form-field> 
+          </div>
+
+
+ <div  *ngIf="!rentOption" >
+       
+            <div class="extra-field-two" >
+            <mat-form-field class="example-full-width" appearance="outline">
+              <mat-label class="fixed-Label"><span id="finanacial">Financial Position*</span></mat-label>
+
+              <mat-select name="FinancialPosition" [(ngModel)]="listingBuyer.FinancialPosition"
+        value="FinancialPosition" class="example-full-width"  #FinancialPosition>
+                <mat-option value="any" name="Mortgage arranged " (click)="removefinancialPostion()">
+                </mat-option>
+                <mat-option value="Mortgate to be arranged" name="Mortgate to be arranged"
+                  (click)="removefinancialPostion()">Mortgate to be arranged</mat-option>
+                <mat-option value="Mortgage arranged " name="Mortgage arranged " (click)="removefinancialPostion()">
+                  Mortgage arranged </mat-option>
+                <mat-option value="Cash Buyer" name="Cash Buyer" (click)="removefinancialPostion()">Cash Buyer
+                </mat-option>
+                <mat-option value="Please specify" name="Please specify" (click)="financialPostion()">Other</mat-option>
+              </mat-select>
+            </mat-form-field>
+            </div>
+          </div> 
+
+
+
+         <mat-form-field class="example-full-width" *ngIf="finanacial">
+            <input matInput placeholder="other" name="other" class="mat-mail-input">
+          </mat-form-field> 
+
+    
+
+     <div >
+
+            <mat-form-field class="example-full-width" appearance="outline">
+              <mat-label class="fixed-Label"><span id="Property-type">Property Type*</span></mat-label>
+     
+              <mat-select name="Propertytype" [(ngModel)]="listingBuyer.PropertyType" value="Propertytype"
+                class="example-full-width"  #PropertyType>
+                <mat-option value="Flat">Flat</mat-option>
+                <mat-option value="Studio">Studio</mat-option>
+                <mat-option value="Terracedhouse">Terraced house</mat-option>
+                <mat-option class="example-margin" value="Maisonette">Maisonette</mat-option>
+                <mat-option value="Semi-detached">Semi-detached house</mat-option>
+                <mat-option value="Bungalow">Bungalow</mat-option>
+                <mat-option value="Detachedhouse">Detached house</mat-option>
+                <mat-option value="Cottage">Cottage</mat-option>
+                <mat-option value="Townhouse">Town house</mat-option>
+                <mat-option value="Countryhouse">Country house</mat-option>
+                <mat-option value="Barnconversion">Barn conversion</mat-option>
+                <mat-option value="Farm">Farm</mat-option>
+                <mat-option value="Houseboat">Houseboat</mat-option>
+                <mat-option value="Lodge">Lodge</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div> 
+
+
+          <!--Min Max Amount-->
+          <label class="new-heading-nestimate"><span id="roomMin">Number of Rooms</span></label>
+          <div class="price-selection">
+        
+            <mat-form-field class="filed-width" appearance="outline">
+              <mat-label class="fixed-Label">Min*</mat-label>     
+              <mat-select [(value)]="Roommin" name="Roommin" [(ngModel)]="listingBuyer.Roommin"  #Roommins>
+                <mat-option value="Studio">Studio</mat-option>
+                <mat-option value="1">1</mat-option>
+                <mat-option value="2">2</mat-option>
+                <mat-option value="3">3</mat-option>
+                <mat-option value="4">4</mat-option>
+                <mat-option value="5">5</mat-option>
+              </mat-select>
+            </mat-form-field>
+        
+        
+            <mat-form-field class="filed-width"  appearance="outline">
+              <mat-label class="fixed-Label"><span id="roomMax">Max*</span></mat-label>
+              <mat-select [(value)]="Roomsmax" name="Roomsmax" [(ngModel)]="listingBuyer.Roomsmax"  #Roomsmaxs>
+                <mat-option value="Studio">Studio</mat-option>
+                <mat-option value="1">1</mat-option>
+                <mat-option value="2">2</mat-option>
+                <mat-option value="3">3</mat-option>
+                <mat-option value="4">4</mat-option>
+                <mat-option value="5">5</mat-option>
+              </mat-select>
+            </mat-form-field>
+            
+          </div> 
+          <!--Max-No of Rooms-->
+<div class="amounts" *ngIf="amounts">
+          <!--New Values-->
+          <!--Min Max Amount-->
+          <label class="new-heading-nestimate" *ngIf="buyOption">Price Range</label>
+       <label class="new-heading-nestimate" *ngIf="rentOption">Rent Range</label>
+          <div class="price-selection" *ngIf="rentOption">
+       
+            <mat-form-field class="filed-width" appearance="outline" >
+              <mat-label class="fixed-Label"><span id="MinAmount">Min*</span></mat-label>
+
+              <mat-select [(value)]="min" name="MinAmount" [(ngModel)]="listingBuyer.MinAmount"  #MinAmount>
+                <mat-option value="100">100 pcm</mat-option>
+                <mat-option value="200">200 pcm</mat-option>
+                <mat-option value="300">300 pcm</mat-option>
+                <mat-option value="400">400 pcm</mat-option>
+                <mat-option value="500">500 pcm</mat-option>
+                <mat-option value="600">600 pcm</mat-option>
+                <mat-option value="700">700 pcm</mat-option>
+                <mat-option value="800">800 pcm</mat-option>
+                <mat-option value="900">900 pcm</mat-option>
+                <mat-option value="1000">1000 pcm</mat-option>
+                <mat-option value="1250">1250 pcm</mat-option>
+                <mat-option value="1500">1500 pcm</mat-option>
+                <mat-option value="1750">1750 pcm</mat-option>
+                <mat-option value="2000">2000 pcm</mat-option>
+                <mat-option value="2250">2250 pcm</mat-option>
+                <mat-option value="2500">2500 pcm</mat-option>
+                <mat-option value="2750">2750 pcm</mat-option>
+                <mat-option value="3000">3000 pcm</mat-option>
+                <mat-option value="3250">3250 pcm</mat-option>
+                <mat-option value="3500">3500 pcm</mat-option>
+                <mat-option value="3750">3750 pcm</mat-option>
+                <mat-option value="4000">4000 pcm</mat-option>
+                <mat-option value="4250">4250 pcm</mat-option>
+                <mat-option value="4500">4500 pcm</mat-option>
+                <mat-option value="5000">5000 pcm</mat-option>
+                <mat-option value="5500">5500 pcm</mat-option>
+                <mat-option value="6000">6000 pcm</mat-option>
+                <mat-option value="6500">6500 pcm</mat-option>
+                <mat-option value="7000">7000 pcm</mat-option>
+                <mat-option value="7500">7500 pcm</mat-option>
+                <mat-option value="8000">8500 pcm</mat-option>
+                <mat-option value="9000">9000 pcm</mat-option>
+                <mat-option value="9500">9500 pcm</mat-option>
+                <mat-option value="10000">10000 pcm</mat-option>
+                <mat-option value="12500">125000 pcm</mat-option>
+                <mat-option value="15000">15000 pcm</mat-option>
+                <mat-option value="17500">17500 pcm</mat-option>
+                <mat-option value="20000">20000 pcm</mat-option>
+                <mat-option value="25000">25000 pcm</mat-option>
+
+
+
+              </mat-select>
+            </mat-form-field>
+            
+       
+             <mat-form-field class="filed-width"   appearance="outline">
+              <mat-label class="fixed-Label"><span id="MaxAmount">Max*</span></mat-label>
+
+              <mat-select [(value)]="max" name="MaxAmount" [(ngModel)]="listingBuyer.MaxAmount"  #MaxAmount>
+                <mat-option value="100">100 pcm</mat-option>
+                <mat-option value="200">200 pcm</mat-option>
+                <mat-option value="300">300 pcm</mat-option>
+                <mat-option value="400">400 pcm</mat-option>
+                <mat-option value="500">500 pcm</mat-option>
+                <mat-option value="600">600 pcm</mat-option>
+                <mat-option value="700">700 pcm</mat-option>
+                <mat-option value="800">800 pcm</mat-option>
+                <mat-option value="900">900 pcm</mat-option>
+                <mat-option value="1000">1000 pcm</mat-option>
+                <mat-option value="1250">1250 pcm</mat-option>
+                <mat-option value="1500">1500 pcm</mat-option>
+                <mat-option value="1750">1750 pcm</mat-option>
+                <mat-option value="2000">2000 pcm</mat-option>
+                <mat-option value="2250">2250 pcm</mat-option>
+                <mat-option value="2500">2500 pcm</mat-option>
+                <mat-option value="2750">2750 pcm</mat-option>
+                <mat-option value="3000">3000 pcm</mat-option>
+                <mat-option value="3250">3250 pcm</mat-option>
+                <mat-option value="3500">3500 pcm</mat-option>
+                <mat-option value="3750">3750 pcm</mat-option>
+                <mat-option value="4000">4000 pcm</mat-option>
+                <mat-option value="4250">4250 pcm</mat-option>
+                <mat-option value="4500">4500 pcm</mat-option>
+                <mat-option value="5000">5000 pcm</mat-option>
+                <mat-option value="5500">5500 pcm</mat-option>
+                <mat-option value="6000">6000 pcm</mat-option>
+                <mat-option value="6500">6500 pcm</mat-option>
+                <mat-option value="7000">7000 pcm</mat-option>
+                <mat-option value="7500">7500 pcm</mat-option>
+                <mat-option value="8000">8500 pcm</mat-option>
+                <mat-option value="9000">9000 pcm</mat-option>
+                <mat-option value="9500">9500 pcm</mat-option>
+                <mat-option value="10000">10000 pcm</mat-option>
+                <mat-option value="12500">125000 pcm</mat-option>
+                <mat-option value="15000">15000 pcm</mat-option>
+                <mat-option value="17500">17500 pcm</mat-option>
+                <mat-option value="20000">20000 pcm</mat-option>
+                <mat-option value="25000">25000 pcm</mat-option>
+              </mat-select>
+            </mat-form-field>
+          
+          </div> 
+          <!--New Values Ended-->
+
+<!--Old Value-->
+          <!--Min Max Amount-->
+     <div class="price-selection" *ngIf="buyOption">
+  
+            <mat-form-field class="filed-width" appearance="outline" >
+              <mat-label class="fixed-Label"><span id="MinAmount">Min*</span></mat-label>
+
+              <mat-select [(value)]="min" name="MinAmount" [(ngModel)]="listingBuyer.MinAmount"  #MinAmount>
+                <mat-option value="50,000">50,000</mat-option>
+                <mat-option value="60,000">60,000</mat-option>
+                <mat-option value="70,000">70,000</mat-option>
+                <mat-option value="80,000">80,000</mat-option>
+                <mat-option value="90,000">90,000</mat-option>
+                <mat-option value="100,000">100,000</mat-option>
+                <mat-option value="110,000">110,000</mat-option>
+                <mat-option value="120,000">120,000</mat-option>
+                <mat-option value="125,000">125,000</mat-option>
+                <mat-option value="130,000">130,000</mat-option>
+                <mat-option value="140,000">140,000</mat-option>
+                <mat-option value="150,000">150,000</mat-option>
+                <mat-option value="160,000">160,000</mat-option>
+                <mat-option value="170,000">170,000</mat-option>
+                <mat-option value="175,000">175,000</mat-option>
+                <mat-option value="180,000">180,000</mat-option>
+                <mat-option value="190,000">190,000</mat-option>
+                <mat-option value="200,000">200,000</mat-option>
+                <mat-option value="210,000">210,000</mat-option>
+                <mat-option value="220,000">220,000</mat-option>
+                <mat-option value="230,000">230,000</mat-option>
+                <mat-option value="240,000">240,000</mat-option>
+                <mat-option value="250,000">250,000</mat-option>
+                <mat-option value="260,000">260,000</mat-option>
+                <mat-option value="270,000">270,000</mat-option>
+                <mat-option value="280,000">280,000</mat-option>
+                <mat-option value="290,000">290,000</mat-option>
+                <mat-option value="300,000">300,000</mat-option>
+                <mat-option value="325,000">325,000</mat-option>
+                <mat-option value="350,000">350,000</mat-option>
+                <mat-option value="375000">375,000</mat-option>
+                <mat-option value="400,000">400,000</mat-option>
+                <mat-option value="425,000">425,000</mat-option>
+                <mat-option value="450,000">450,000</mat-option>
+                <mat-option value="475,000">475,000</mat-option>
+                <mat-option value="500,000">500,000</mat-option>
+                <mat-option value="525,000">525,000</mat-option>
+                <mat-option value="550,000">550,000</mat-option>
+                <mat-option value="575,000">575,000</mat-option>
+                <mat-option value="600,000">600,000</mat-option>
+                <mat-option value="625,000">625,000</mat-option>
+                <mat-option value="650,000">650,000</mat-option>
+                <mat-option value="675,000">675,000</mat-option>
+                <mat-option value="700,000">700,000</mat-option>
+                <mat-option value="725,000">725,000</mat-option>
+                <mat-option value="750,000">750,000</mat-option>
+                <mat-option value="775,000">775,000</mat-option>
+                <mat-option value="800,000">800,000</mat-option>
+                <mat-option value="825,000">825,000</mat-option>
+                <mat-option value="850,000">850,000</mat-option>
+                <mat-option value="875,000">875,000</mat-option>
+                <mat-option value="900,000">900,000</mat-option>
+                <mat-option value="925,000">925,000</mat-option>
+                <mat-option value="950,000">950,000</mat-option>
+                <mat-option value="975,000">975,000</mat-option>
+                <mat-option value="1000,000">1000,000</mat-option>
+                <mat-option value="1250,000">1250,000</mat-option>
+                <mat-option value="1500,000">1500,000</mat-option>
+                <mat-option value="1750,000">1750,000</mat-option>
+                <mat-option value="2000,000">2000,000</mat-option>
+                <mat-option value="2250,000">2250,000</mat-option>
+                <mat-option value="2500,000">2500,000</mat-option>
+                <mat-option value="3000,000">3000,000</mat-option>
+                <mat-option value="4000,000">4000,000</mat-option>
+                <mat-option value="5000,000">5000,000</mat-option>
+                <mat-option value="6000,000">6000,000</mat-option>
+                <mat-option value="7000,000">7000,000</mat-option>
+                <mat-option value="8000,000">8000,000</mat-option>
+                <mat-option value="10000,000">10000,000</mat-option>
+                <mat-option value="15000,000">15000,000</mat-option>
+                <mat-option value="20000,000">20000,000</mat-option>
+              </mat-select>
+            </mat-form-field>
+          
+
+            <mat-form-field class="filed-width" appearance="outline">
+              <mat-label class="fixed-Label"><span id="MaxAmount">Max*</span></mat-label>
+
+              <mat-select [(value)]="max" name="MaxAmount" [(ngModel)]="listingBuyer.MaxAmount"  #MaxAmount>
+                <mat-option value="50,000">50,000</mat-option>
+                <mat-option value="60,000">60,000</mat-option>
+                <mat-option value="70,000">70,000</mat-option>
+                <mat-option value="80,000">80,000</mat-option>
+                <mat-option value="90,000">90,000</mat-option>
+                <mat-option value="100,000">100,000</mat-option>
+                <mat-option value="110,000">110,000</mat-option>
+                <mat-option value="120,000">120,000</mat-option>
+                <mat-option value="125,000">125,000</mat-option>
+                <mat-option value="130,000">130,000</mat-option>
+                <mat-option value="140,000">140,000</mat-option>
+                <mat-option value="150,000">150,000</mat-option>
+                <mat-option value="160,000">160,000</mat-option>
+                <mat-option value="170,000">170,000</mat-option>
+                <mat-option value="175,000">175,000</mat-option>
+                <mat-option value="180,000">180,000</mat-option>
+                <mat-option value="190,000">190,000</mat-option>
+                <mat-option value="200,000">200,000</mat-option>
+                <mat-option value="210,000">210,000</mat-option>
+                <mat-option value="220,000">220,000</mat-option>
+                <mat-option value="230,000">230,000</mat-option>
+                <mat-option value="240,000">240,000</mat-option>
+                <mat-option value="250,000">250,000</mat-option>
+                <mat-option value="260,000">260,000</mat-option>
+                <mat-option value="270,000">270,000</mat-option>
+                <mat-option value="280,000">280,000</mat-option>
+                <mat-option value="290,000">290,000</mat-option>
+                <mat-option value="300,000">300,000</mat-option>
+                <mat-option value="325,000">325,000</mat-option>
+                <mat-option value="350,000">350,000</mat-option>
+                <mat-option value="375000">375,000</mat-option>
+                <mat-option value="400,000">400,000</mat-option>
+                <mat-option value="425,000">425,000</mat-option>
+                <mat-option value="450,000">450,000</mat-option>
+                <mat-option value="475,000">475,000</mat-option>
+                <mat-option value="500,000">500,000</mat-option>
+                <mat-option value="525,000">525,000</mat-option>
+                <mat-option value="550,000">550,000</mat-option>
+                <mat-option value="575,000">575,000</mat-option>
+                <mat-option value="600,000">600,000</mat-option>
+                <mat-option value="625,000">625,000</mat-option>
+                <mat-option value="650,000">650,000</mat-option>
+                <mat-option value="675,000">675,000</mat-option>
+                <mat-option value="700,000">700,000</mat-option>
+                <mat-option value="725,000">725,000</mat-option>
+                <mat-option value="750,000">750,000</mat-option>
+                <mat-option value="775,000">775,000</mat-option>
+                <mat-option value="800,000">800,000</mat-option>
+                <mat-option value="825,000">825,000</mat-option>
+                <mat-option value="850,000">850,000</mat-option>
+                <mat-option value="875,000">875,000</mat-option>
+                <mat-option value="900,000">900,000</mat-option>
+                <mat-option value="925,000">925,000</mat-option>
+                <mat-option value="950,000">950,000</mat-option>
+                <mat-option value="975,000">975,000</mat-option>
+                <mat-option value="1000,000">1000,000</mat-option>
+                <mat-option value="1250,000">1250,000</mat-option>
+                <mat-option value="1500,000">1500,000</mat-option>
+                <mat-option value="1750,000">1750,000</mat-option>
+                <mat-option value="2000,000">2000,000</mat-option>
+                <mat-option value="2250,000">2250,000</mat-option>
+                <mat-option value="2500,000">2500,000</mat-option>
+                <mat-option value="3000,000">3000,000</mat-option>
+                <mat-option value="4000,000">4000,000</mat-option>
+                <mat-option value="5000,000">5000,000</mat-option>
+                <mat-option value="6000,000">6000,000</mat-option>
+                <mat-option value="7000,000">7000,000</mat-option>
+                <mat-option value="8000,000">8000,000</mat-option>
+                <mat-option value="10000,000">10000,000</mat-option>
+                <mat-option value="15000,000">15000,000</mat-option>
+                <mat-option value="20000,000">20000,000</mat-option>
+              </mat-select>
+            </mat-form-field>
+      
+          </div> 
+<!--Old Value End-->
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+          <!--Offer validity Group-->
+
+          <mat-radio-group aria-label="Select an option" name="Validity" [(ngModel)]="listingBuyer.Validity"
+            value="Validity"  #Validity>
+            <label class="new-heading-nestimate"><span id="val">How long should your Nestimate be active?</span></label><br>
+            <div class="radio-button-align"   >
+              <mat-radio-button value="1" class="mr-2">1 Month</mat-radio-button>
+              <mat-radio-button value="3">3 Months</mat-radio-button>
+              <mat-radio-button value="6">6 Months</mat-radio-button>
+              <mat-radio-button value="Indefinite">Indefinite
+              </mat-radio-button>
+            </div>
+          </mat-radio-group>
+          <p class="Label-notes new-heading-nestimate">*Note:Your Nestimate will remain active for the selected time
+            period above</p>
+          <!--Offer validity Group End-->
+
+
+
+
+
+
+
+          </div>
+
+        <div class="card-margin background-new-form">
+          <label class="new-heading-nestimate heading-optional" >Optional Details</label><br><br>
+          <!--No of Bathrooms-->
+          <label class="new-heading-nestimate">No of Bathrooms</label>
+          <div class="price-selection" >
+            <mat-form-field class="filed-width" id="minBathroom" appearance="outline">
+              <mat-label class="fixed-Label">Min</mat-label>
+              <mat-select [(value)]="Minbathroom" name="Minbathroom" [(ngModel)]="listingBuyer.Minbathroom">
+                <mat-option value="any">Any</mat-option>
+                <mat-option value="1">1</mat-option>
+                <mat-option value="2">2</mat-option>
+                <mat-option value="3">3 or more</mat-option>
+              </mat-select>
+            </mat-form-field>
+       
+            <mat-form-field class="filed-width" id="maxBathroom" appearance="outline">
+              <mat-label class="fixed-Label">Max</mat-label>
+              <mat-select [(value)]="Maxbathroom" name="Maxbathroom" [(ngModel)]="listingBuyer.Maxbathroom">
+                <mat-option value="any">Any</mat-option>
+                <mat-option value="1">1</mat-option>
+                <mat-option value="2">2</mat-option>
+                <mat-option value="3">3 or more</mat-option>
+              </mat-select>
+            </mat-form-field>
+         
+          </div>
+
+
+
+
+          <!--No of reception-->
+          <label class="new-heading-nestimate">No of Reception Rooms</label>
+          <div class="price-selection">
+            <mat-form-field class="filed-width" id="Minreception" appearance="outline">
+              <mat-label class="fixed-Label">Min</mat-label>
+
+              <mat-select [(value)]="Minreception" name="Minreception" [(ngModel)]="listingBuyer.Minreception">
+                <mat-option value="any">Any</mat-option>
+                <mat-option value="1">1</mat-option>
+                <mat-option value="2">2</mat-option>
+                <mat-option value="3">3 or more</mat-option>
+              </mat-select>
+            </mat-form-field>
+            <mat-form-field class="filed-width" id="MaxReception" appearance="outline">
+              <mat-label class="fixed-Label">Max</mat-label>
+   
+              <mat-select [(value)]="Maxreception" name="Maxreception" [(ngModel)]="listingBuyer.Maxreception">
+                <mat-option value="any">Any</mat-option>
+                <mat-option value="1">1</mat-option>
+                <mat-option value="2">2</mat-option>
+                <mat-option value="3">3 or more</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+
+     
+          <div class="extra-field-two" id="condition">
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label class="fixed-Label">Property Condition</mat-label>
+
+            <mat-select [(value)]="Conditions" name="Conditions" [(ngModel)]="listingBuyer.Conditions">
+              <mat-option value="any">Any</mat-option>
+              <mat-option value="New Build">New Build</mat-option>
+              <mat-option value="Needs Modernisation">Needs Modernisation</mat-option>
+            </mat-select>
+          </mat-form-field>
+          </div>
+
+          <div class="extra-field-two" id="ownership" *ngIf="!rentOption">
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label class="fixed-Label">Ownership</mat-label>
+
+            <mat-select name="Ownership" [(ngModel)]="listingBuyer.Ownership" value="Ownership"
+              class="example-full-width">
+              <mat-option value="any">Any</mat-option>
+              <mat-option value="Leasehold">Leasehold</mat-option>
+              <mat-option value="Freehold">Freehold</mat-option>
+              <mat-option value="Share of Freehold">Share of Freehold</mat-option>
+            </mat-select>
+          </mat-form-field>
+          </div>
+          <div class="extra-field-two" id="features">
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label class="fixed-Label">Property Features</mat-label>
+            <mat-select [formControl]="Condition" multiple [(ngModel)]="listingBuyer.features" #sl
+              class="mat-select-edit mat-check">
+              <div class="select-constion">
+                <img src="../../../../assets/Images/cross.png" class="button-cross" (click)="sl.close()">
+              </div>
+              <mat-option *ngFor="let Conditions of ConditionsList" [value]="Conditions" class="mat-check">
+                {{Conditions}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+      
+
+
+      </div>
+
+    </div>
+    
+        <div class="button-next-tab2">
+          <a (click)="previousStep()" mat-raised-button color="primary">Previous</a>
+          <a  mat-raised-button color="primary" (click)="selectTab(2, 1)">Submit</a>
+        </div>
+      </div>
+    </mat-tab>
+
+  </mat-tab-group>
+</form>
+
+
+<div class="right-side-Image-buyer">
+  <img src="http://134.209.93.8{{buyerRightImageUrl}}" class="right-form-image">
+</div>
+
+</div>

@@ -1,0 +1,136 @@
+<div *ngIf="isLoading" class="loading-container">
+  <mat-progress-spinner mode="indeterminate"></mat-progress-spinner>
+</div>
+
+ 
+
+
+<div class="home_content_container" *ngIf="!isLoggedIn">
+
+
+  <div class="slider">
+    <img src="http://134.209.93.8{{imageUrl}}" alt=""  class="slider-image">
+     <div class="text-over-image">{{TopImageText}}</div>
+    </div>
+  
+
+<div class="radio-cn" >
+  <div class="custom-buttons">
+    <p class="i-am heading-nestimate">Please select if you are:</p>
+    <div class="upper-custom-button">
+    
+    <div class="custom-button-first" >
+      <label class="radio-container custom-text">a home owner
+        <input type="radio" name="home"    value="owner" #owner [(ngModel)]="home">
+        <span class="checkmark"></span>
+      </label>
+    </div>
+  
+    </div>
+
+  <div class="upper-custom-button mt-2">
+
+    <div class="custom-button-first" >
+      <label class="radio-container custom-text">a home seeker
+        <input type="radio" name="home"  value="seeker" #seeker [(ngModel)]="home2">
+        <span class="checkmark"></span>
+      </label>
+    
+    </div>
+  </div>
+      <div class="large-button mt-3">
+      
+        <div class="create-nestimate" (click)="homeradio()">
+          <img src="../../assets/Images/singleHomeLogo.png" class="button-image" >
+          <span class="text-create-nestimate mr-1">Create your Nestimate</span>
+          <span class="greater-than-arrow paragraph-color mr-1">&gt;</span>
+
+        </div>
+      </div>
+  </div>
+</div>
+
+<div *ngIf="!isLoggedIn">
+ <div class="image-over">
+
+   <img  src="http://134.209.93.8{{secondImageUrl}}" class="buyer-jpg">
+   <p class="text-over-image-second">{{SecondImageText}}</p>
+ </div>
+
+
+</div>
+  
+
+
+
+<div class="card-steps" *ngIf="!isLoggedIn">
+  <div class="title heading-nestimate heading-nestimate-font">{{how}}</div>
+
+    <div class="steps-container">
+
+         <div class="step">
+          <img src="http://134.209.93.8{{Step1Image }}" class="step-mage">
+      
+          <p class="step-text "><b class="outputText">Create your Nestimate</b><br> 
+          </p>
+            
+            <div class="slider-text">{{Step1TExt}}</div>
+            <hr class="line-below">
+         </div>
+       
+         <div class="step">
+          <img src="http://134.209.93.8{{Step2Image}}" class="step-mage">
+       
+          <p class="step-text">
+            <b class="outputText">Review Nestimate</b>
+          </p>
+       
+            <div class="slider-text">{{Step2Text}}</div>
+      
+            <hr class="line-below">
+    </div>
+
+
+         <div class="step">
+          <img src="http://134.209.93.8{{step3Image}}" class="step-mage">
+      
+          <p class="step-text">
+            <b class="outputText">Express Interest</b>
+            
+          </p>
+            
+            <div class="slider-text">
+{{step3Text}}</div>
+         
+          </div>
+    </div>
+  </div>
+
+  <div class="title heading-nestimate heading-nestimate-font">Blogs</div>
+   
+  <div class="heading-nestimate blog-top-heading">Keep up to date with the latest property news</div>
+
+  <div class="blog-grid">
+  <div *ngFor= "let blog of homePageBlogs"  >
+     <div class="grid-image">
+      <img src="http://134.209.93.8{{blog.Image.url}}" alt=""  class="blog-image">
+     </div>
+    
+     <div class="grid-text">
+       <a href="{{blog.ArticleLink}}" class="blog-link-decoration">
+
+      {{blog.About}}
+    </a>
+     </div>
+    </div>
+  </div>
+
+  <div class="heading-nestimate blog-top-heading">All property news 	&gt;</div>
+</div>
+
+
+
+
+
+
+

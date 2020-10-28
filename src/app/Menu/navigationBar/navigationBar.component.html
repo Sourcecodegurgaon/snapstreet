@@ -1,0 +1,471 @@
+<div class="login-desktop-button" (click)=" openLogIn()">
+  <div class="login-button-main">
+
+    <p class="Login-buton-text">Log In</p>
+  </div>
+</div>
+
+
+<div class="mobile-wrapper">
+  <div class="mobile-container">
+    <div class="content">
+
+      <nav>
+        <div class="main-navigation-bar">
+          <div class="menu-toogle">
+            <img src="../../../assets/Images/menu.png" class="icon-size" *ngIf="open" (click)="openMenu()">
+            <img src="../../../assets/Images/close-outline.png" class="icon-size" *ngIf="close" (click)="closeMenu()">
+          </div>
+
+          <div class="plus-icon">
+            <img src="../../../assets/Images/home.png" class="icon-size" routerLink="/homenew" *ngIf="isLoggedIn">
+            
+<!--          
+        <img src="../../../assets/Images/add-outline.svg" class="icon-size" (click)="plusmenu()"
+              *ngIf="plusOpenMenu">
+            <img src="../../../assets/Images/close-outline.svg" class="icon-size" *ngIf="plusclose"
+              (click)="plusCloseMenu()">  -->
+
+          </div>
+          <div class="imge-logo-header">
+            <img src="assets/Images/Nestimatelogo1.png" class="logo-nav" routerLink="/" (click)="closeMenu()" />
+          </div>
+
+          <div class="notification-upper"  >
+            <div class="notification-upper" *ngIf="isLoggedIn && bellShow" >
+              <img src="../../../assets/Images/notifications.png" class="icon-size new"  *ngIf="!bellicontwo" (click)="bellone()"  >
+              <img src="../../../assets/Images/notifications.png" class="icon-size"  *ngIf="bellicontwo" (click)="belltwo()">
+          <span class="log-out-text red-text" *ngIf="notifications>0">{{notifications}}</span> 
+
+
+            </div>
+          </div>
+          <div class="logout">
+            <div class="logout-icon" *ngIf="!isLoggedIn" (click)="openLogIn()">
+              <span class="log-out-text heading-nestimate">LogIn</span>
+            </div>
+            <div class="logout-icon" *ngIf="isLoggedIn" >
+              <span class="log-out-text heading-nestimate" (click)="StrapiAuthService.logout()" >Logout</span>
+            </div>
+          </div>
+        </div>
+        <div class="nav-div" *ngIf="menuItem">
+          <div class="menu-login">
+          <app-template></app-template>
+        </div>
+          <ul class="nav-links" *ngIf="isLoggedIn" (click)="Itemmenu()">
+ 
+            <div class="grid-container" routerLink="/editprofile">
+              <div><img src="assets/Images/my-profile-icon-png-1.png" /></div>
+              <div>
+                <li>
+                  <a routerLink="/profile" class="nav-links-text">Edit Profile</a>
+                </li>
+              </div>
+              <div>
+                <img src="assets/Images/asset1.png" class="nav-link-icon" />
+              </div>
+            </div>
+            <div class="grid-container" routerLink="/Agenthome" *ngIf="agent">
+              <div>
+                <img src="assets/Images/135-512-removebg-preview.png" />
+              </div>
+              <div>
+                <li>
+                  <a routerLink="/Agenthome" class="nav-links-text">Dashboard</a>
+                </li>
+              </div>
+              <div>
+                <img src="assets/Images/asset1.png" class="nav-link-icon" />
+              </div>
+            </div>
+            <div class="grid-container" routerLink="/myListing" *ngIf="!agent">
+              <div>
+                <img src="assets/Images/135-512-removebg-preview.png" />
+              </div>
+              <div>
+                <li>
+                  <a routerLink="/myListing" class="nav-links-text">My Nestimates</a>
+                </li>
+              </div>
+              <div>
+                <img src="assets/Images/asset1.png" class="nav-link-icon" />
+              </div>
+            </div>
+            <div class="grid-container" routerLink="/mymatches" *ngIf="!agent">
+              <div>
+                <img src="assets/Images/download-removebg-preview.png" />
+              </div>
+              <div>
+                <li>
+                  <a routerLink="/mymatches" class="nav-links-text">Activity</a>
+                </li>
+              </div>
+              <div>
+                <img src="assets/Images/asset1.png" class="nav-link-icon" />
+              </div>
+            </div>
+          </ul>
+        </div>
+      </nav>
+    </div>
+  </div>
+</div>
+
+<div class="plus=menu-item" *ngIf="plusMenu">
+  <app-plus (click)="plusMenuContainer()"></app-plus>
+</div>
+ <div class="main-background-login" *ngIf="navLogin">
+
+  <div class="new-form-mat-card" *ngIf="!SignUp">
+    <div class="close-popup">
+      <img src="../../../../assets/Images/cross.png" class="button-cross" (click)="newclose()">
+    
+    </div>
+    <div class="top-image-Login-form">
+      <img src="assets/Images/Nestimatelogo1.png" class="top-image-Login-Form">
+    </div>
+    <div class="login-form-heading">
+      <h3 class="heading-text">Sign-In</h3>
+    </div>
+
+    <div class="form-group new-form-group">
+     <div clas="field-heading">Email</div> 
+      <input type="text" class="form-control custom-field" type="email" name="emails" #userEmailLogin
+        [(ngModel)]="emails" placeholder="Enter Email" *ngIf="!emailField">
+        <span class="email-text-written" *ngIf="notValidEmail" style="color: red;">{{validity}}</span>
+      <span class="email-text-written" *ngIf="emailField">{{emails}}</span>
+    </div>
+    <div class="form-group new-form-group" *ngIf="emailField">
+      <div clas="field-heading">Password</div> 
+      <input type="password" class="form-control custom-field" name="passs" #userPasswordLogin type="password"
+        [(ngModel)]="passs" placeholder="Enter Password">
+    </div>
+    <div class="a-section" >
+      <span id="continue" class="a-button a-button-span12 a-button-primary" *ngIf="!emailField" (click)="validateEmail(emails)"><span class="a-button-inner"><input
+            id="continue" tabindex="5" class="a-button-input" type="submit" aria-labelledby="continue-announce" /><span
+            id="continue-announce" class="a-button-text" aria-hidden="true">
+            Continue
+          </span></span></span>
+          <span id="continue" class="a-button a-button-span12 a-button-primary" *ngIf="emailField" (click)="login(emails, passs)"><span class="a-button-inner" ><input
+            id="continue" tabindex="5" class="a-button-input" type="submit" aria-labelledby="continue-announce" /><span
+            id="continue-announce" class="a-button-text" aria-hidden="true">
+            SignIn
+          </span></span></span>
+      <div id="legalTextRow" class="a-row a-spacing-top-medium a-size-small">
+        By signing-in you agree to Nestimates's <a href="/#/terms">Conditions of Use & Sale</a>. Please see our <a
+          href="/#/PrivacyPolicy">Privacy Notice</a>.
+      </div>
+    </div>
+  </div>
+  <div class="signup-bottom-card" *ngIf="!SignUp">
+    <div class="a-divider a-divider-break">
+      <h5>New to Nestimate?</h5>
+    </div>
+    <span id="auth-create-account-link" class="a-button-signup a-button-span12 a-button-base" (click)="newCustomeer()"><span
+        class="a-button-inner"><span id="createAccountSubmit" tabindex="6" class="a-button-text" role="button">
+          Create your Nestimate account
+        </span></span></span>
+  </div>
+
+
+  <div class="new-form-mat-card" *ngIf="SignUp" style="margin-top: 18rem;">
+    <div class="close-popup">
+      <img src="../../../../assets/Images/cross.png" class="button-cross" (click)="newclose()">
+    
+    </div>
+    <div class="top-image-Login-form">
+      <img src="assets/Images/Nestimatelogo1.png" class="top-image-Login-Form">
+    </div>
+    <div class="login-form-heading">
+      <h3 class="heading-text">Sign-Up</h3>
+    </div>
+      
+    <div class="form-group new-form-group">
+      <div clas="field-heading">Name</div> 
+      <input type="text" class="form-control custom-field" placeholder="Full Name" name="name"  [(ngModel)]="name" #displayName>
+    </div>
+    <div class="form-group new-form-group">
+      <div clas="field-heading">Email</div> 
+      <input type="text" class="form-control custom-field" type="email" name="emails" #userEmailLogin
+        [(ngModel)]="emails" placeholder="Enter Email" >
+   
+    </div>
+    <div class="form-group new-form-group" >
+      <div clas="field-heading">Password</div> 
+      <input type="password" class="form-control custom-field" name="passs" #userPasswordLogin type="password"
+        [(ngModel)]="passs" placeholder="Enter Password">
+    </div>
+
+  
+ <div class="terms-condition-notification">
+          <section class="example-section property-con-form">
+
+            <mat-checkbox class="example-margin heading-nestimate" value="Email">Email</mat-checkbox>
+            <mat-checkbox class="example-margin heading-nestimate" value="SMS">SMS</mat-checkbox>
+            <mat-checkbox class="example-margin heading-nestimate" value="Post">Post</mat-checkbox>
+            <mat-checkbox class="example-margin heading-nestimate" value="All">Email,SMS and Post from acrefully
+              selected<br> third port
+            </mat-checkbox>
+          
+          </section>
+ <div for="text" class="heading-nestimate ">{{topLine}}</div>
+            <div for="text" class="heading-nestimate policy">{{secondLine}}
+            </div>
+
+ </div>
+          <div class="a-section"  (click)="newUsers(name,emails,passs)">
+            <span id="continue" class="a-button a-button-span12 a-button-primary"><span class="a-button-inner"><input
+                  id="continue" tabindex="5" class="a-button-input" type="submit" aria-labelledby="continue-announce" /><span
+                  id="continue-announce" class="a-button-text" aria-hidden="true">
+                  SignUp
+                </span></span></span>
+    </div>
+  </div>
+  <div class="signup-bottom-card" *ngIf="SignUp">
+    <div class="a-divider a-divider-break">
+      <h5>Already have account?</h5>
+    </div>
+    <span id="auth-create-account-link" class="a-button-signup a-button-span12 a-button-base" (click)="alreadyUser()"><span
+        class="a-button-inner"><span id="createAccountSubmit" tabindex="6" class="a-button-text" role="button">
+          Already have account?
+        </span></span></span>
+  </div>
+
+</div>
+
+
+
+
+<div *ngIf="notificationoverlay" class="notification-overlay-main">
+  <div class="main-grid-notifucation">
+    <div class="grid-item" *ngFor="let confirmInterest of confirmInterests" >
+  
+    <div class="notification read-notfication" *ngIf="confirmInterest.Detail.Type == 'Buyer_Confirmed_my_nestimate' && confirmInterest.Detail.Lastseen == null"  (click)="getDocid(confirmInterest.id,confirmInterest.Detail.propertyId,confirmInterest.Detail.time,confirmInterest.Detail.userId,confirmInterest.Detail.viewed,now,confirmInterest.Detail.Type)">
+        <div class="notification-icon" >
+    <img src="../../../assets/Images/file.png" class="icon">
+     </div>
+     <div class="text heading-nestimate" >
+    A Buyer expressed insterest on your Nestimate.Click to review<br>
+    <span class="timing-in-hours" *ngIf="(confirmInterest.Detail.Time  | date) == (now | date)">
+      {{confirmInterest.Detail.Time  | date: 'shortTime'}}</span>
+
+     <span class="timing-in-hours" *ngIf="(confirmInterest.Detail.Time  | date) != (now | date)">
+        {{confirmInterest.Detail.Time | date:'medium'}} </span> 
+    </div>
+    
+    
+    
+    
+    
+    </div>
+    
+    
+    <div class="notification " *ngIf="confirmInterest.Detail.Type == 'Buyer_Confirmed_my_nestimate' && confirmInterest.Detail.Lastseen != null"  (click)="getDocid(confirmInterest.id,confirmInterest.Detail.propertyId,confirmInterest.Detail.time,confirmInterest.Detail.userId,confirmInterest.Detail.viewed,now,confirmInterest.Detail.Type)">
+      <div class="notification-icon" >
+    <img src="../../../assets/Images/file.png" class="icon">
+    </div>
+    <div class="text heading-nestimate" >
+    A Buyer expressed insterest on your Nestimate.Click to review<br>
+    <span class="timing-in-hours" *ngIf="(confirmInterest.Detail.Time  | date) == (now | date)">
+      {{confirmInterest.Detail.Time  | date: 'shortTime'}}</span>
+
+     <span class="timing-in-hours" *ngIf="(confirmInterest.Detail.Time  | date) != (now | date)">
+        {{confirmInterest.Detail.Time | date:'medium'}} </span> 
+      
+    </div>
+    
+    
+    
+    
+    
+    </div>
+    
+      
+    <div class="notification read-notfication" *ngIf="confirmInterest.Detail.Type == 'Buyer_Confirmed_my_activity' && confirmInterest.Detail.Lastseen == null"  (click)="getDocid(confirmInterest.id,confirmInterest.Detail.propertyId,confirmInterest.Detail.time,confirmInterest.Detail.userId,confirmInterest.Detail.viewed,now,confirmInterest.Detail.Type)">
+      <div class="notification-icon" >
+  <img src="../../../assets/Images/file.png" class="icon">
+   </div>
+   <div class="text heading-nestimate" >
+  A Buyer expressed insterest on your Nestimate.Click to review<br>
+  <span class="timing-in-hours" *ngIf="(confirmInterest.Detail.Time  | date) == (now | date)">
+    {{confirmInterest.Detail.Time  | date: 'shortTime'}}</span>
+
+   <span class="timing-in-hours" *ngIf="(confirmInterest.Detail.Time  | date) != (now | date)">
+      {{confirmInterest.Detail.Time | date:'medium'}} </span> 
+  </div>
+  
+  
+  
+  
+  
+  </div>
+  
+  
+  <div class="notification " *ngIf="confirmInterest.Detail.Type == 'Buyer_Confirmed_my_activity' && confirmInterest.Detail.Lastseen != null"  (click)="getDocid(confirmInterest.id,confirmInterest.Detail.propertyId,confirmInterest.Detail.time,confirmInterest.Detail.userId,confirmInterest.Detail.viewed,now,confirmInterest.Detail.Type)">
+    <div class="notification-icon" >
+  <img src="../../../assets/Images/file.png" class="icon">
+  </div>
+  <div class="text heading-nestimate" >
+  A Buyer expressed insterest on your Nestimate.Click to review<br>
+  <span class="timing-in-hours" *ngIf="(confirmInterest.Detail.Time  | date) == (now | date)">
+    {{confirmInterest.Detail.Time  | date: 'shortTime'}}</span>
+
+   <span class="timing-in-hours" *ngIf="(confirmInterest.Detail.Time  | date) != (now | date)">
+      {{confirmInterest.Detail.Time | date:'medium'}} </span> 
+  </div>
+  
+  
+  
+  
+  
+  </div>
+  
+    
+      
+     
+    
+    
+    
+       
+       <div class="notification read-notfication" *ngIf="confirmInterest.Detail.Type == 'Seller_Confirmed_my_nestimate' && confirmInterest.Detail.Lastseen == null" (click)="getDocid(confirmInterest.id,confirmInterest.Detail.propertyId,confirmInterest.Detail.time,confirmInterest.Detail.userId,confirmInterest.Detail.viewed,now,confirmInterest.Detail.Type)">
+        <div class="notification-icon">
+       <img src="../../../assets/Images/file.png" class="icon">
+        </div>
+        <div class="text heading-nestimate">
+       A seller expressed interest on your Nestimate.Click to Review<br>
+       
+       <span class="timing-in-hours" *ngIf="(confirmInterest.Detail.Time  | date) == (now | date)">
+        {{confirmInterest.Detail.Time  | date: 'shortTime'}}</span>
+  
+       <span class="timing-in-hours" *ngIf="(confirmInterest.Detail.Time  | date) != (now | date)">
+          {{confirmInterest.Detail.Time | date:'medium'}} </span> 
+       </div>
+       
+    
+       </div> 
+       <div class="notification " *ngIf="confirmInterest.Detail.Type == 'Seller_Confirmed_my_nestimate' && confirmInterest.Detail.Lastseen != null" (click)="getDocid(confirmInterest.id,confirmInterest.Detail.propertyId,confirmInterest.Detail.time,confirmInterest.Detail.userId,confirmInterest.Detail.viewed,now,confirmInterest.Detail.Type)">
+        <div class="notification-icon">
+       <img src="../../../assets/Images/file.png" class="icon">
+        </div>
+        <div class="text heading-nestimate">
+       A seller expressed interest on your Nestimate.Click to Review<br>
+       
+       <span class="timing-in-hours" *ngIf="(confirmInterest.Detail.Time  | date) == (now | date)">
+        {{confirmInterest.Detail.Time  | date: 'shortTime'}}</span>
+  
+       <span class="timing-in-hours" *ngIf="(confirmInterest.Detail.Time  | date) != (now | date)">
+          {{confirmInterest.Detail.Time | date:'medium'}} </span> 
+       </div>
+       
+    
+       </div> 
+    
+    
+       
+
+       <div class="notification read-notfication" *ngIf="confirmInterest.Detail.Type == 'Agent_Matches_Confirmed' &&  confirmInterest.Detail.Lastseen == null" (click)="getDocid(confirmInterest.id,confirmInterest.Detail.propertyId,confirmInterest.Detail.time,confirmInterest.Detail.userId,confirmInterest.Detail.viewed,now,confirmInterest.Detail.Type)">
+        <div class="notification-icon" >
+       <img src="../../../assets/Images/delete.png" class="icon">
+        </div>
+        <div class="text heading-nestimate">
+    
+            A Seller confirmed interest on your Nestimate.Click to review<br>
+            <span class="timing-in-hours" *ngIf="(confirmInterest.Detail.Time  | date) == (now | date)">
+              {{confirmInterest.Detail.Time  | date: 'shortTime'}}</span>
+        
+             <span class="timing-in-hours" *ngIf="(confirmInterest.Detail.Time  | date) != (now | date)">
+                {{confirmInterest.Detail.Time | date:'medium'}} </span> 
+       </div>
+       
+       </div>
+    
+    
+       <div class="notification " *ngIf="confirmInterest.Detail.Type == 'Agent_Matches_Confirmed'  &&  confirmInterest.Detail.Lastseen != null" (click)="getDocid(confirmInterest.id,confirmInterest.Detail.propertyId,confirmInterest.Detail.time,confirmInterest.Detail.userId,confirmInterest.Detail.viewed,now,confirmInterest.Detail.Type)">
+        <div class="notification-icon" >
+       <img src="../../../assets/Images/delete.png" class="icon">
+        </div>
+        <div class="text heading-nestimate ">
+    
+            A Seller confirmed interest on your Nestimate.Click to review<br>
+         
+            <span class="timing-in-hours" *ngIf="(confirmInterest.Detail.Time  | date) == (now | date)">
+              {{confirmInterest.Detail.Time  | date: 'shortTime'}}</span>
+        
+             <span class="timing-in-hours" *ngIf="(confirmInterest.Detail.Time  | date) != (now | date)">
+                {{confirmInterest.Detail.Time | date:'medium'}} </span> 
+       </div>
+       
+       </div>
+        <div class="notification read-notfication" *ngIf="confirmInterest.Detail.Type == 'Seller_Confirmed_my_activity' &&  confirmInterest.Detail.Lastseen == null" (click)="getDocid(confirmInterest.id,confirmInterest.Detail.propertyId,confirmInterest.Detail.time,confirmInterest.Detail.userId,confirmInterest.Detail.viewed,now,confirmInterest.Detail.Type)">
+        <div class="notification-icon" >
+       <img src="../../../assets/Images/delete.png" class="icon">
+        </div>
+        <div class="text heading-nestimate">
+    
+            A Seller confirmed interest on your Nestimate.Click to review<br>
+            <span class="timing-in-hours" *ngIf="(confirmInterest.Detail.Time  | date) == (now | date)">
+              {{confirmInterest.Detail.Time  | date: 'shortTime'}}</span>
+        
+             <span class="timing-in-hours" *ngIf="(confirmInterest.Detail.Time  | date) != (now | date)">
+                {{confirmInterest.Detail.Time | date:'medium'}} </span> 
+       </div>
+       
+       </div>
+    
+    
+       <div class="notification " *ngIf="confirmInterest.Detail.Type == 'Seller_Confirmed_my_activity'  &&  confirmInterest.Detail.Lastseen != null" (click)="getDocid(confirmInterest.id,confirmInterest.Detail.propertyId,confirmInterest.Detail.time,confirmInterest.Detail.userId,confirmInterest.Detail.viewed,now,confirmInterest.Detail.Type)">
+        <div class="notification-icon" >
+       <img src="../../../assets/Images/delete.png" class="icon">
+        </div>
+        <div class="text heading-nestimate ">
+    
+            A Seller confirmed interest on your Nestimate.Click to review<br>
+            <span class="timing-in-hours" *ngIf="(confirmInterest.Detail.Time  | date) == (now | date)">
+              {{confirmInterest.Detail.Time  | date: 'shortTime'}}</span>
+        
+             <span class="timing-in-hours" *ngIf="(confirmInterest.Detail.Time  | date) != (now | date)">
+                {{confirmInterest.Detail.Time | date:'medium'}} </span> 
+       </div>
+       
+       </div>
+       <div class="notification read-notfication" *ngIf="confirmInterest.Detail.Type == 'Seller_Select_Agent' &&  confirmInterest.Detail.Lastseen == null" (click)="getDocid(confirmInterest.id,confirmInterest.Detail.propertyId,confirmInterest.Detail.time,confirmInterest.Detail.userId,confirmInterest.Detail.viewed,now,confirmInterest.Detail.Type)">
+        <div class="notification-icon" >
+       <img src="../../../assets/Images/delete.png" class="icon">
+        </div>
+        <div class="text heading-nestimate">
+    
+          A Seller confirmed as a Agent.Click to review<br>
+            <span class="timing-in-hours" *ngIf="(confirmInterest.Detail.Time  | date) == (now | date)">
+              {{confirmInterest.Detail.Time  | date: 'shortTime'}}</span>
+        
+             <span class="timing-in-hours" *ngIf="(confirmInterest.Detail.Time  | date) != (now | date)">
+                {{confirmInterest.Detail.Time | date:'medium'}} </span> 
+       </div>
+       
+       </div>
+    
+    
+       <div class="notification " *ngIf="confirmInterest.Detail.Type == 'Seller_Select_Agent'  &&  confirmInterest.Detail.Lastseen != null" (click)="getDocid(confirmInterest.id,confirmInterest.Detail.propertyId,confirmInterest.Detail.time,confirmInterest.Detail.userId,confirmInterest.Detail.viewed,now,confirmInterest.Detail.Type)">
+        <div class="notification-icon" >
+       <img src="../../../assets/Images/delete.png" class="icon">
+        </div>
+        <div class="text heading-nestimate ">
+    
+          A Seller confirmed as a Agent.Click to review<br>
+            <span class="timing-in-hours" *ngIf="(confirmInterest.Detail.Time  | date) == (now | date)">
+              {{confirmInterest.Detail.Time  | date: 'shortTime'}}</span>
+        
+             <span class="timing-in-hours" *ngIf="(confirmInterest.Detail.Time  | date) != (now | date)">
+                {{confirmInterest.Detail.Time | date:'medium'}} </span> 
+       </div>
+       
+       </div>
+
+
+  
+    </div>
+    </div>
+
+  <!-- <app-notification (click)="closenotifiation()"></app-notification> -->
+</div>

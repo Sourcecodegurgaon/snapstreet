@@ -1,0 +1,181 @@
+<div *ngIf="isLoading" class="loading-container">
+  <mat-progress-spinner mode="indeterminate"></mat-progress-spinner>
+</div>
+<div class="container profile-main-container">
+  <div class="profile-wrapper-content">
+    <p class="profile-heading heading-nestimate"></p>
+    <div class="profile-name-image mt-4">
+      <!-- <img src="{{user.photoURL}}" class="rounded-circle Profile-pic" alt="Cinque Terre"> -->
+      <!-- <p class="profile-name">{{user.Name}}</p> -->
+    </div>
+  </div>
+  <mat-card class="profile-name-field-option">
+    <div class="grid-container">
+      <div>
+      </div>
+      <div>
+        <div class="extra-field-two" id="name">
+        <mat-form-field class="example-full-width" appearance="outline" >
+          <mat-label class="fixed-Label">
+            Nane*
+          </mat-label>
+     <input matInput  required name="Name" class="mat-mail-input" [(ngModel)]="Name" required #Names> 
+        </mat-form-field>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid-container">
+      <div>
+
+      </div>
+      <div>
+         <!--Phone Number field-->
+         <div class="extra-field-two" id="phone">
+         <mat-form-field class="example-full-width" appearance="outline">
+          <mat-label class="fixed-Label">
+            Phone Number*
+          </mat-label>
+          <span matPrefix>+44 &nbsp;</span>
+
+          <input matInput  name="phonenumber" class="mat-mail-input"   [(ngModel)]="Phone" type=”tel” [formControl]="phoneFormControl" required #phone>
+          <mat-error *ngIf="phoneFormControl.hasError('phonenumber') && !phoneFormControl.hasError('required')">
+            Please enter a valid phonenumber
+          </mat-error>
+          <mat-error *ngIf="phoneFormControl.hasError('required')">
+            phonenumber is <strong>required</strong>
+          </mat-error>
+        
+        </mat-form-field>
+        </div>
+       
+        <!--Phone Number field-->
+      </div>
+    </div>
+    <div class="grid-container">
+      <div>
+      </div>
+      <div>
+        <div class="extra-field-two" id="email">
+        <mat-form-field class="example-full-width" appearance="outline">
+          <mat-label class="fixed-Label">
+            Email*
+          </mat-label>
+          <input matInput  name="Email" class="mat-mail-input" [(ngModel)]="email"
+          [formControl]="emailFormControl">
+          <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+            Please enter a valid email address
+          </mat-error>
+          <mat-error *ngIf="emailFormControl.hasError('required')">
+            Email is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+</div>
+
+      </div>
+    </div>
+    <div class="grid-container">
+      <div>
+      
+      </div>
+      <div>
+
+          <!--Date Of Birth Field-->
+          <div class="extra-field-two" id="dob">
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label class="fixed-Label">
+              Date of Birth*
+            </mat-label>
+            <input matInput [matDatepicker]="picker" name="DOB" class="mat-mail-input" value="DOB"
+              [(ngModel)]="DOB" [formControl]="dobFormControl" required #dateofbirth>
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+            <mat-error *ngIf="dobFormControl.hasError('dob') && !dobFormControl.hasError('required')">
+              Please enter a valid dob
+            </mat-error>
+            <mat-error *ngIf="dobFormControl.hasError('required')">
+              DOB is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+          </div>
+          <!--Date Of Birth Field End-->
+
+
+        
+      </div>
+    </div>
+
+    <div class="grid-container">
+      <div>
+      </div>
+      <div>
+        <div class="extra-field-address" id="address">
+        <mat-form-field class="example-full-width" appearance="outline">
+          <mat-label class="fixed-Label">
+            Address*
+          </mat-label>
+          <input matInput  name="Address" class="mat-mail-input"  [(ngModel)]="Currentaddress" [formControl]="addressFormControl" required #addressed>
+          <mat-error *ngIf="addressFormControl.hasError('Address') && !addressFormControl.hasError('required')">
+            Please enter a valid address
+          </mat-error>
+          <mat-error *ngIf="addressFormControl.hasError('required')">
+           address is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+  </div>
+      </div>
+    </div>
+
+
+  </mat-card>
+
+  <mat-card class="mt-2"  style="  background-color: #f5f5f5;">
+    <div class="prefrence-notification  " style="  background-color: #f5f5f5;">
+      <h5 class="text-center notification-heading heading-nestimate">Notification Prefrences</h5>
+      <div class="prefrence-radio">
+
+
+
+   <mat-radio-group aria-label="Select an option" class="radio-top-buyer" name="PropertyFor"
+   [(ngModel)]="prefrence"  >
+            <mat-radio-button value="1" >Email for every match</mat-radio-button><br>
+            <mat-radio-button value="2">Email me once a week with all the matches 
+              that I have</mat-radio-button>
+          </mat-radio-group>
+   
+ 
+  </div> 
+  
+  
+  </div>
+  
+  
+  </mat-card>
+
+
+
+  <div class="edit-profile-submitbutton">
+   <button type="button" class="btn btn-back heading-nestimate" routerLink="/">BACK</button>
+    <button type="button" class="btn btn-back heading-nestimate" (click)="userDetail(Name,email,Phone,DOB,Currentaddress,prefrence)">Save</button>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>

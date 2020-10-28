@@ -1,0 +1,6 @@
+.help {
+    padding: 1em;
+    white-space: pre-line;
+    text-align: justify;
+    color: var(--light-blue-color);;
+}
